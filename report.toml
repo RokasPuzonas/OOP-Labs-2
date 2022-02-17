@@ -1,0 +1,19 @@
+title = "Objektinis programavimas 2 (P175B123)"
+
+student = { name = "Studento Roko Puzono IF-1/1", gender = "male" }
+lecturer = { name = "lekt. Simonavičius Kęstutis", gender = "male" }
+
+[[sections]]
+title = "Rekursija (L1)"
+
+[[sections]]
+title = "Dinaminis atminties valdymas (L2)"
+
+[[sections]]
+title = "Bendrinės klasės ir testavimas (L3)"
+
+[[sections]]
+title = "Polimorfizmas ir išimčių valdymas (L4)"
+
+[[sections]]
+title = "Deklaratyvusis programavimas (L5)"

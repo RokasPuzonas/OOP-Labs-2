@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<shop>
+	<product title="Pieštukas" price="0.1"/>
+	<product title="Trintukas" price="0.1"/>
+	<product title="A4-popierius" price="2.31"/>
+	<product title="Rašikliai" price="0.45"/>
+	<product title="Tušas" price="1.57"/>
+	<product title="Spalvotas-popierius" price="3.22"/>
+	<product title="Guašas" price="2.90"/>
+</shop>
