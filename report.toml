@@ -5,6 +5,48 @@ lecturer = { name = "lekt. Simonavičius Kęstutis", gender = "male" }
 
 [[sections]]
 title = "Rekursija (L1)"
+project = "Recursion/LD_24"
+interface_scheme = "Recursion/LD_24/interface-scheme.png"
+guide = """
+* Atsidarius programą matysite vieną lygtuką
+* Paspaudus mygtuką geriausia susitiko vieta bus surasta arba bus parašyta,
+kad neįmanoma susitiki.
+"""
+problem = """
+LD_24. Susitikimas.
+
+Grupė draugų nusprendė susitikti mieste, o po to kartu eiti valgyti picos. Bet
+tuomet jie susiginčijo, kur geriausia susitikti, ir kurioje picerijoje valgyti.
+Galiausiai draugai nusprendė, jog patogiausia išsirinkti tokią susitikimo vietą
+ir piceriją, kad jų nueitų kelių iki susitikimo vietos, po to iki picerijos ir
+atgal į pradinius taškus suma būtų mažiausia. Parašykite programą, kuri rastų
+patogiausią susitikimo vietą ir piceriją. Duomenys. Pirmoje „U3.txt“ eilutėje
+duoti du skaičiai n ir m — miesto žemėlapio aukštis ir plotis (2 ≤ n, m ≤ 10).
+Toliau pateiktas miesto žemėlapis — n eilučių, kiekvienoje jų – m simbolių.
+Galimi šie simboliai:
+
+. — langelis pereinamas.
+
+X — langelis nepereinamas (pastatas, tvora...)
+
+P — picerija. Langelis nepereinamas, į piceriją galima įeiti iš gretimo
+langelio ir išeiti į bet kurį gretimą langelį. Įeiti galima tik į tą piceriją,
+kurioje bus valgoma pica.
+
+S — susitikimo vieta. Langelis pereinamas.
+
+D — vieno iš draugų pradinė buvimo vieta. Langelis pereinamas.
+
+Judėti galima tik aukštyn, žemyn, į kairę arba į dešinę (ne įstrižai).
+Rezultatai. Atskirose eilutėse atspausdinkite pradines draugų koordinates
+(koordinačių pradžia – apatinis kairysis langelis, numeruojama nuo 1,
+pirmiausiai nurodoma x koordinatė, po to - y). Atskirose eilutėse
+atspausdinkite: „Susitikimo vieta“ ir susitikimo vietos koordinates; „Picerija“
+ir picerijos koordinates; „Nueita“ ir draugų nueitų kelių sumą. Jei susitikimo
+vietos ar picerijos, kurias visi draugai galėtų pasiekti, nėra, atspausdinkite
+žodį „Neįmanoma“.
+"""
+
 
 [[sections]]
 title = "Dinaminis atminties valdymas (L2)"
