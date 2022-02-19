@@ -41,6 +41,9 @@
                 <br />
                 <asp:Button ID="Button1" runat="server" Text="Registruotis" OnClick="Button1_Click" />
                 <br />
+                <br />
+                <asp:Button ID="Button2" runat="server" Text="Išvalyti" OnClick="Button2_Click" />
+                <br />
       <br />
                 <asp:Table ID="Table1" runat="server" BackColor="#FFFFCC" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" GridLines="Both">
                 </asp:Table>

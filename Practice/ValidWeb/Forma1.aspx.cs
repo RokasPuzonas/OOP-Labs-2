@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -45,10 +46,15 @@ namespace ValidWeb
         protected void Button1_Click(object sender, EventArgs e)
         {
             string name = TextBox1.Text;
+            if (Regex.IsMatch(name, @"[^a-zA-Z]")) { return; }
+
             string surname = TextBox2.Text;
+            if (Regex.IsMatch(surname, @"[^a-zA-Z]")) { return; }
+
             string school = TextBox3.Text;
             string age = DropDownList1.Text;
-            string language = CheckBoxList1.sele;
+            string language = CheckBoxList1.SelectedValue;
+            
             string user = String.Join("|", name, surname, school, age, language);
             if (Session["users"] == null) {
                 Session["users"] = user;
@@ -70,5 +76,7 @@ namespace ValidWeb
 
             Table1.Rows.Add(row);
         }
+
+        
     }
 }
