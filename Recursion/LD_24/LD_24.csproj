@@ -7,13 +7,13 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6AAB1A29-81E1-4A08-A8C3-9C203C684B8F}</ProjectGuid>
+    <ProjectGuid>{4E9466EF-CDF4-4620-B51E-125F5A014A04}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LD_24</RootNamespace>
     <AssemblyName>LD_24</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>
@@ -71,6 +71,11 @@
     <Content Include="App_Data\Rezultatai.txt" />
     <Content Include="App_Data\U3.txt" />
     <Content Include="Forma1.aspx" />
+    <Content Include="interface-scheme.png" />
+    <Content Include="tests\1\inputs\U3.txt" />
+    <Content Include="tests\1\outputs\Rezultatai.txt" />
+    <Content Include="tests\2\inputs\U3.txt" />
+    <Content Include="tests\2\outputs\Rezultatai.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +85,9 @@
     <Compile Include="Code\MapTile.cs" />
     <Compile Include="Code\Point.cs" />
     <Compile Include="Code\TaskUtils.cs" />
+    <Compile Include="Forma1-helper.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Forma1.aspx.cs">
       <DependentUpon>Forma1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,7 +106,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -112,9 +119,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57614</DevelopmentServerPort>
+          <DevelopmentServerPort>51983</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:44363/</IISUrl>
+          <IISUrl>http://localhost:44364/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

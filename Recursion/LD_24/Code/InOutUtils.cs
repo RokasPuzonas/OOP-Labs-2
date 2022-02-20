@@ -6,8 +6,17 @@ using System.Web;
 
 namespace LD_24.Code
 {
-    public class InOutUtils
+    /// <summary>
+    /// Functions related to working with files
+    /// </summary>
+    public static class InOutUtils
     {
+        /// <summary>
+        /// Read a map from a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <returns>A map loaded from the file</returns>
+        /// <exception cref="Exception">If there was an invalid tile</exception>
         public static Map ReadMap(string filename)
         {
             string[] lines = File.ReadAllLines(filename);
@@ -42,6 +51,11 @@ namespace LD_24.Code
             return map;
         }
 
+        /// <summary>
+        /// Write a map to a file
+        /// </summary>
+        /// <param name="writer">Target file writer</param>
+        /// <param name="map">Target map</param>
         public static void WriteMap(StreamWriter writer, Map map)
         {
             for (int y = 0; y < map.Height; y++)
@@ -74,6 +88,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Write out best pizzeria result to file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="result">Target result</param>
         public static void WriteBestPizzeriaResult(StreamWriter writer, BestPizzeriaResult result)
         {
             if (result == null)
@@ -88,6 +107,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Write out friend positions to file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="friends">Target friends list</param>
         public static void WriteFriendPositions(StreamWriter writer, List<Point> friends)
         {
             foreach (var friend in friends)

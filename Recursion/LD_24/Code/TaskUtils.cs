@@ -6,7 +6,7 @@ using System.Web;
 namespace LD_24.Code
 {
     
-    public class TaskUtils
+    public static class TaskUtils
     {
         public static BestPizzeriaResult FindBestPizzeria(Map map)
         {

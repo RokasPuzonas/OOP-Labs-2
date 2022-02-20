@@ -5,9 +5,18 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// A simple point class for storing x and y together.
+    /// </summary>
     public class Point
     {
+        /// <summary>
+        /// The x component
+        /// </summary>
         public int X { get; set; }
+        /// <summary>
+        /// The y component
+        /// </summary>
         public int Y { get; set; }
 
         public Point(int x, int y)
@@ -16,6 +25,11 @@ namespace LD_24.Code
             Y = y;
         }
 
+        /// <summary>
+        /// Check if 2 points are the same
+        /// </summary>
+        /// <param name="obj">Other point</param>
+        /// <returns>Are the x and y the same</returns>
         public override bool Equals(object obj)
         {
             return obj is Point point &&
@@ -31,5 +45,9 @@ namespace LD_24.Code
             return hashCode;
         }
 
+        public override string ToString()
+        {
+            return String.Format("Point({0}, {1})", X, Y);
+        }
     }
 }
