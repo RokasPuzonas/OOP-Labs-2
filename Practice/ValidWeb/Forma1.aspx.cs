@@ -10,7 +10,7 @@ namespace ValidWeb
 {
     public partial class Forma1 : System.Web.UI.Page
     {
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (DropDownList1.Items.Count == 0)
@@ -46,15 +46,15 @@ namespace ValidWeb
         protected void Button1_Click(object sender, EventArgs e)
         {
             string name = TextBox1.Text;
-            if (Regex.IsMatch(name, @"[^a-zA-Z]")) { return; }
+            if (Regex.IsMatch(name, @"[^a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]")) { return; }
 
             string surname = TextBox2.Text;
-            if (Regex.IsMatch(surname, @"[^a-zA-Z]")) { return; }
+            if (Regex.IsMatch(surname, @"[^a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]")) { return; }
 
             string school = TextBox3.Text;
             string age = DropDownList1.Text;
             string language = CheckBoxList1.SelectedValue;
-            
+
             string user = String.Join("|", name, surname, school, age, language);
             if (Session["users"] == null) {
                 Session["users"] = user;
@@ -77,6 +77,6 @@ namespace ValidWeb
             Table1.Rows.Add(row);
         }
 
-        
+
     }
 }
