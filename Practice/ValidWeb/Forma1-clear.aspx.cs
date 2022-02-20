@@ -13,6 +13,7 @@ namespace ValidWeb
         protected void Button2_Click(object sender, EventArgs e)
         {
             Session.Clear();
+            Label8.Text = "Dalyvių kiekis: 0";
             for (int i = Table1.Rows.Count-1; i > 0; i--)
             {
                 Table1.Rows.RemoveAt(i);

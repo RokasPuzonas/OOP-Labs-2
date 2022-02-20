@@ -44,6 +44,8 @@
                 <br />
                 <asp:Button ID="Button2" runat="server" Text="Išvalyti" OnClick="Button2_Click" />
                 <br />
+                <br />
+                <asp:Label ID="Label8" runat="server" Text="Dalyvių kiekis: 0"></asp:Label>
       <br />
                 <asp:Table ID="Table1" runat="server" BackColor="#FFFFCC" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" GridLines="Both">
                 </asp:Table>

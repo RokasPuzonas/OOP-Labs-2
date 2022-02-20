@@ -24,6 +24,7 @@ namespace ValidWeb
 
             TableRow header = new TableRow();
 
+            header.Cells.Add(new TableCell { Text = "<b>Nr</b>" });
             header.Cells.Add(new TableCell { Text = "<b>Vardas</b>" });
             header.Cells.Add(new TableCell { Text = "<b>Pavardė</b>" });
             header.Cells.Add(new TableCell { Text = "<b>Mokykla</b>" });
@@ -68,15 +69,15 @@ namespace ValidWeb
         {
             TableRow row = new TableRow();
 
+            row.Cells.Add(new TableCell { Text = Table1.Rows.Count.ToString() });
             row.Cells.Add(new TableCell { Text = name });
             row.Cells.Add(new TableCell { Text = surname });
             row.Cells.Add(new TableCell { Text = school });
             row.Cells.Add(new TableCell { Text = age });
             row.Cells.Add(new TableCell { Text = language });
 
+            Label8.Text = String.Format("Dalyvių kiekis: {0}", Table1.Rows.Count);
             Table1.Rows.Add(row);
         }
-
-
     }
 }
