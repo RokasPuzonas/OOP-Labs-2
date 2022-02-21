@@ -14,12 +14,12 @@
 				<br />
         <asp:Label ID="Label1" runat="server" Text="Vardas:"></asp:Label>
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Vardas yra privalomas" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Netinkamas vardas" ForeColor="Red" ValidationExpression="^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+"></asp:RegularExpressionValidator>
                 <br />
                 <br />
         <asp:Label ID="Label6" runat="server" Text="Pavardė:"></asp:Label>
         <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
-                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Pavardė yra privaloma" ForeColor="Red"></asp:RequiredFieldValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Netinkama pavardė" ForeColor="Red" ValidationExpression="^[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+"></asp:RegularExpressionValidator>
                 <br />
                 <br />
         <asp:Label ID="Label7" runat="server" Text="Mokykla:"></asp:Label>
@@ -42,7 +42,7 @@
                 <asp:Button ID="Button1" runat="server" Text="Registruotis" OnClick="Button1_Click" />
                 <br />
                 <br />
-                <asp:Button ID="Button2" runat="server" Text="Išvalyti" OnClick="Button2_Click" />
+                <asp:Button ID="Button2" runat="server" Text="Išvalyti" OnClick="Button2_Click" CausesValidation="False" />
                 <br />
                 <br />
                 <asp:Label ID="Label8" runat="server" Text="Dalyvių kiekis: 0"></asp:Label>

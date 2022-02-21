@@ -47,15 +47,22 @@ namespace ValidWeb
         protected void Button1_Click(object sender, EventArgs e)
         {
             string name = TextBox1.Text;
-            if (Regex.IsMatch(name, @"[^a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]")) { return; }
 
             string surname = TextBox2.Text;
-            if (Regex.IsMatch(surname, @"[^a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]")) { return; }
 
             string school = TextBox3.Text;
             string age = DropDownList1.Text;
-            string language = CheckBoxList1.SelectedValue;
+            string language = "";
+            foreach (ListItem item in CheckBoxList1.Items)
+            {
+                if (item.Selected)
+                {
+                    language += item.Text + " ";
+                }
+            }
 
+            language = language.TrimEnd();
+            
             string user = String.Join("|", name, surname, school, age, language);
             if (Session["users"] == null) {
                 Session["users"] = user;
