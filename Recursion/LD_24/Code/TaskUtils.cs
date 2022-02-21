@@ -8,6 +8,11 @@ namespace LD_24.Code
     
     public static class TaskUtils
     {
+        /// <summary>
+        /// Finds the best possible pizzeria for the given map for the friends to meet up
+        /// </summary>
+        /// <param name="map">Target map</param>
+        /// <returns>Best pizzeria result object</returns>
         public static BestPizzeriaResult FindBestPizzeria(Map map)
         {
             int lowestCost = int.MaxValue;
@@ -60,11 +65,27 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Finds the minimum distance between 2 points on map.
+        /// Returns -1, if there is no path
+        /// </summary>
+        /// <param name="map">Target map</param>
+        /// <param name="from">From positions</param>
+        /// <param name="to">To position</param>
+        /// <returns>Minimum distance</returns>
         public static int FindBestPath(Map map, Point from, Point to)
         {
             return FindBestPath(map, from, to, new Stack<Point>());
         }
 
+        /// <summary>
+        /// Finds the minimum distance between 2 points on map.
+        /// Returns -1, if there is no path
+        /// </summary>
+        /// <param name="map">Target map</param>
+        /// <param name="from">From positions</param>
+        /// <param name="to">To position</param>
+        /// <returns>Minimum distance</returns>
         private static int FindBestPath(Map map, Point from, Point to, Stack<Point> exploredPoints)
         {
             if (from.Equals(to)) { return 0; }
@@ -92,6 +113,13 @@ namespace LD_24.Code
             return minCost;
         }
 
+        /// <summary>
+        /// Returns walkable neighbours around a given point
+        /// </summary>
+        /// <param name="map">Target map</param>
+        /// <param name="x">Target x</param>
+        /// <param name="y">Target y</param>
+        /// <returns></returns>
         private static IEnumerable<Point> GetNeighbours(Map map, int x, int y)
         {
             if (map.IsInBounds(x + 1, y) && map.Get(x + 1, y) != MapTile.Wall)
