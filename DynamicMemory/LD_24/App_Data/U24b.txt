@@ -1,0 +1,4 @@
+Petraitis, Petras, 0, 10
+Onaite, Ona, 2, 15
+Jonaitis, Brolis, 1, 100
+Jonaitis, Jonas, 1, 100
