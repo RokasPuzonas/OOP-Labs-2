@@ -8,60 +8,86 @@ namespace LD_24.Code
 {
     public static class TaskUtils
     {
-        public static string FindMostPopularProduct(CustomerList customers)
+        public static List<string> FindMostPopularProducts(OrderList orders)
         {
-            Dictionary<string, int> productCounter = new Dictionary<string, int>();
-            foreach (Customer customer in customers)
+            Dictionary<string, int> productSales = new Dictionary<string, int>();
+            foreach (Order order in orders)
             {
-                if (!productCounter.ContainsKey(customer.ProductID))
+                if (!productSales.ContainsKey(order.ProductID))
                 {
-                    productCounter.Add(customer.ProductID, 1);
+                    productSales.Add(order.ProductID, order.ProductAmount);
                 }
                 else
                 {
-                    productCounter[customer.ProductID]++;
+                    productSales[order.ProductID] += order.ProductAmount;
                 }
             }
 
-            string mostPopularProduct = null;
+            List<string> mostPopularProducts = new List<string>();
             int mostPopularCount = 0;
-            foreach (string product in productCounter.Keys)
+            foreach (string product in productSales.Keys)
             {
-                int count = productCounter[product];
+                int count = productSales[product];
                 if (count > mostPopularCount)
                 {
                     mostPopularCount = count;
-                    mostPopularProduct = product;
+                    mostPopularProducts = new List<string> { product };
+                } else if (count == mostPopularCount)
+                {
+                    mostPopularProducts.Add(product);
                 }
             }
 
-            return mostPopularProduct;
+            return mostPopularProducts;
         }
 
-        public static int CountProductSales(CustomerList customers, string product)
+        public static int CountProductSales(OrderList orders, string product)
         {
             int sales = 0;
-            foreach (Customer customer in customers)
+            foreach (Order order in orders)
             {
-                if (customer.ProductID == product)
+                if (order.ProductID == product)
                 {
-                    sales += customer.ProductAmount;
+                    sales += order.ProductAmount;
                 }
             }
             return sales;
         }
 
-        public static CustomerList FilterByProduct(CustomerList customers, string product)
+        public static OrderList FilterByProduct(OrderList orders, string product)
         {
-            CustomerList filtered = new CustomerList();
-            foreach (Customer customer in customers)
+            OrderList filtered = new OrderList();
+            foreach (Order order in orders)
             {
-                if (customer.ProductID == product)
+                if (order.ProductID == product)
                 {
-                    filtered.AddToEnd(customer);
+                    filtered.AddToEnd(order);
                 }
             }
             return filtered;
+        }
+
+        public static OrderList MergeOrders(OrderList orders)
+        {
+            Dictionary<Tuple<string, string, string>, Order> ordersByName = new Dictionary<Tuple<string, string, string>, Order>();
+            foreach (var order in orders)
+            {
+                var key = Tuple.Create(order.CustomerSurname, order.CustomerName, order.ProductID);
+                if (ordersByName.ContainsKey(key))
+                {
+                    ordersByName[key].ProductAmount += order.ProductAmount;
+                } else
+                {
+                    ordersByName.Add(key, new Order(order.CustomerSurname, order.CustomerName, order.ProductID, order.ProductAmount));
+                }
+            }
+
+            OrderList mergedOrders = new OrderList();
+            foreach (var order in ordersByName.Values)
+            {
+                mergedOrders.AddToEnd(order);
+            }
+            return mergedOrders;
         }
 
         public static Product FindByID(ProductList products, string id)
@@ -76,28 +102,28 @@ namespace LD_24.Code
             return null;
         }
 
-        public static ProductList FilterByMaxPrice(ProductList products, decimal maxPrice)
+        public static ProductList FindByID(ProductList products, List<string> ids)
+        {
+            ProductList foundProducts = new ProductList();
+            foreach (string id in ids)
+            {
+                foundProducts.AddToEnd(FindByID(products, id));
+            }
+            return foundProducts;
+        }
+
+        public static ProductList FilterByQuantitySoldAndPrice(ProductList products, OrderList customers, int minSold, decimal maxPrice)
         {
             ProductList filtered = new ProductList();
             foreach (Product product in products)
             {
                 if (product.Price < maxPrice)
                 {
-                    filtered.AddToEnd(product);
-                }
-            }
-            return filtered;
-        }
-
-        public static ProductList FilterByMinQuantitySold(ProductList products, CustomerList customers, decimal minSold)
-        {
-            ProductList filtered = new ProductList();
-            foreach (Product product in products)
-            {
-                int sold = CountProductSales(customers, product.ID);
-                if (sold >= minSold)
-                {
-                    filtered.AddToEnd(product);
+                    int sold = CountProductSales(customers, product.ID);
+                    if (sold >= minSold)
+                    {
+                        filtered.AddToEnd(product);
+                    }
                 }
             }
             return filtered;

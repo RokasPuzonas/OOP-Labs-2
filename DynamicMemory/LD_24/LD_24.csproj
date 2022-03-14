@@ -72,16 +72,15 @@
     <Content Include="App_Data\U24b.txt" />
     <Content Include="App_Data\U24a.txt" />
     <Content Include="Forma1.aspx" />
+    <Content Include="Styles\main.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code\Customer.cs" />
-    <Compile Include="Code\CustomerList.cs" />
-    <Compile Include="Code\CustomerNode.cs" />
+    <Compile Include="Code\Order.cs" />
+    <Compile Include="Code\OrderList.cs" />
     <Compile Include="Code\InOutUtils.cs" />
     <Compile Include="Code\Product.cs" />
     <Compile Include="Code\ProductList.cs" />
-    <Compile Include="Code\ProductNode.cs" />
     <Compile Include="Code\TaskUtils.cs" />
     <Compile Include="Forma1.aspx.cs">
       <DependentUpon>Forma1.aspx</DependentUpon>

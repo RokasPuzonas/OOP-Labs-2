@@ -8,6 +8,18 @@ namespace LD_24.Code
 {
     public class ProductList : IEnumerable<Product>
     {
+        class ProductNode
+        {
+            public Product Data { get; set; }
+            public ProductNode Next { get; set; }
+
+            public ProductNode(Product data = null, ProductNode next = null)
+            {
+                Data = data;
+                Next = next;
+            }
+        }
+
         private ProductNode head;
         private ProductNode tail;
 

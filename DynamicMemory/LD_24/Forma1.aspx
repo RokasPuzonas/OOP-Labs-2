@@ -4,28 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <link href="~/Styles/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:Label ID="Label1" runat="server" Text="Įtaisai:"></asp:Label>
-        <asp:Table ID="Table1" runat="server" BackColor="#FFFFCC" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" GridLines="Both">
-        </asp:Table>
-        <br />
-        <asp:Label ID="Label2" runat="server" Text="Pirkėjai:"></asp:Label>
-        <asp:Table ID="Table2" runat="server" BackColor="#FFFFCC" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" GridLines="Both">
-        </asp:Table>
-        <br />
-        <asp:Label ID="Label3" runat="server"></asp:Label>
-        <br />
-        <br />
-        <asp:Label ID="Label4" runat="server" Text="Pirkėjai pagal rūšį:"></asp:Label>
-        <asp:Table ID="Table3" runat="server" BackColor="#FFFFCC" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" GridLines="Both">
-        </asp:Table>
-        <br />
-        <hr />
+        
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" ForeColor="Red" />
-        <br />
         <asp:Label ID="Label5" runat="server" Text="n:"></asp:Label>
         <br />
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
@@ -38,11 +22,26 @@
         <br />
         <br />
         <asp:Button ID="Button1" runat="server" Text="Atrinkti" OnClick="Button1_Click" />
-        <br />
-        <br />
-        <asp:Label ID="Label7" runat="server" Text="Atrinkti įtaisai:"></asp:Label>
-        <asp:Table ID="Table4" runat="server" BackColor="#FFFFCC" BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" GridLines="Both">
-        </asp:Table>
+        <div id="ResultsDiv" runat="server">
+            <br />
+            <hr />
+            <br />
+            <asp:Label ID="Label1" runat="server" Text="Įtaisai:"></asp:Label>
+            <asp:Table ID="Table1" runat="server">
+            </asp:Table>
+            <asp:Label ID="Label2" runat="server" Text="Pirkėjai:"></asp:Label>
+            <asp:Table ID="Table2" runat="server">
+            </asp:Table>
+            <asp:Label ID="Label8" runat="server" Text="Populiariausi įtaisai:"></asp:Label>
+            <asp:Table ID="Table5" runat="server">
+            </asp:Table>
+            <asp:Label ID="Label4" runat="server" Text="Pirkėjai pagal rūšį:"></asp:Label>
+            <div id="OrdersByProductContainer" runat="server">
+            </div>
+            <asp:Label ID="Label7" runat="server" Text="Atrinkti įtaisai:"></asp:Label>
+            <asp:Table ID="Table4" runat="server">
+            </asp:Table>
+        </div>
     </form>
 </body>
 </html>

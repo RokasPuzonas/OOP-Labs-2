@@ -5,27 +5,27 @@ using System.Web;
 
 namespace LD_24.Code
 {
-    public class Customer
+    public class Order
     {
-        public string Surname { get; set; }
-        public string Name { get; set; }
+        public string CustomerSurname { get; set; }
+        public string CustomerName { get; set; }
         public string ProductID { get; set; }
         public int ProductAmount { get; set; }
 
-        public Customer(string surname, string name, string productID, int productAmount)
+        public Order(string customerSurname, string customerName, string productID, int productAmount)
         {
-            Surname = surname;
-            Name = name;
+            CustomerSurname = customerSurname;
+            CustomerName = customerName;
             ProductID = productID;
             ProductAmount = productAmount;
         }
 
         public override string ToString()
         {
-            return String.Format("Customer{Name = '{0}'}", Name);
+            return String.Format("Order{Name = '{0}'}", CustomerName);
         }
 
-        public static bool operator <(Customer a, Customer b)
+        public static bool operator <(Order a, Order b)
         {
             if (a.ProductAmount > b.ProductAmount)
             {
@@ -33,28 +33,28 @@ namespace LD_24.Code
             }
             else if (a.ProductAmount == b.ProductAmount)
             {
-                int surnameCompare = a.Surname.CompareTo(b.Surname);
+                int surnameCompare = a.CustomerSurname.CompareTo(b.CustomerSurname);
                 if (surnameCompare < 0)
                 {
                     return true;
                 }
                 else if (surnameCompare == 0)
                 {
-                    return a.Name.CompareTo(b.Name) < 0;
+                    return a.CustomerName.CompareTo(b.CustomerName) < 0;
                 }
             }
 
             return false;
         }
-        public static bool operator >(Customer a, Customer b)
+        public static bool operator >(Order a, Order b)
         {
             return !(a < b && a == b);
         }
-        public static bool operator ==(Customer a, Customer b)
+        public static bool operator ==(Order a, Order b)
         {
-            return a.ProductAmount == b.ProductAmount && a.Name == b.Name && a.Surname == b.Surname;
+            return a.ProductAmount == b.ProductAmount && a.CustomerName == b.CustomerName && a.CustomerSurname == b.CustomerSurname;
         }
-        public static bool operator !=(Customer a, Customer b)
+        public static bool operator !=(Order a, Order b)
         {
             return !(a == b);
         }

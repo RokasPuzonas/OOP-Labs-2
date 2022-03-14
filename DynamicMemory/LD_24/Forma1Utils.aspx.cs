@@ -10,83 +10,131 @@ namespace LD_24
 {
     public partial class Forma1 : System.Web.UI.Page
     {
-        public void ShowProducts(Table table, ProductList products)
+        private IEnumerable<Tuple<Product, TableRow>> ShowProdcutsTable(Table table, ProductList products, params string[] columns)
         {
             table.Rows.Clear();
 
             TableRow header = new TableRow();
-            header.Cells.Add(new TableCell { Text = "ID" });
-            header.Cells.Add(new TableCell { Text = "Vardas" });
-            header.Cells.Add(new TableCell { Text = "Kaina, eur." });
+            foreach (string column in columns)
+            {
+                header.Cells.Add(new TableCell { Text = column });
+            }
             table.Rows.Add(header);
 
-            foreach (Product product in products)
+            if (products.Count() > 0) {
+                foreach (Product product in products)
+                {
+                    TableRow row = new TableRow();
+                    yield return Tuple.Create(product, row);
+                    table.Rows.Add(row);
+                }
+            } else
             {
                 TableRow row = new TableRow();
+                row.Cells.Add(new TableCell { Text = "Nėra", ColumnSpan = columns.Length });
+                table.Rows.Add(row);
+            }
+        }
+
+        private IEnumerable<Tuple<Order, TableRow>> ShowOrdersTable(Table table, string title, OrderList orders, params string[] columns)
+        {
+            table.Rows.Clear();
+
+            if (title != null)
+            {
+                TableRow row = new TableRow();
+                row.Cells.Add(new TableCell { Text = title, ColumnSpan = columns.Length });
+                table.Rows.Add(row);
+            }
+
+            TableRow header = new TableRow();
+            foreach (string column in columns)
+            {
+                header.Cells.Add(new TableCell { Text = column });
+            }
+            table.Rows.Add(header);
+
+            if (orders.Count() > 0)
+            {
+                foreach (Order order in orders)
+                {
+                    TableRow row = new TableRow();
+                    yield return Tuple.Create(order, row);
+                    table.Rows.Add(row);
+                }
+            }
+            else
+            {
+                TableRow row = new TableRow();
+                row.Cells.Add(new TableCell { Text = "Nėra", ColumnSpan = columns.Length });
+                table.Rows.Add(row);
+            }
+        }
+
+        private IEnumerable<Tuple<Order, TableRow>> ShowOrdersTable(Table table, OrderList orders, params string[] columns)
+        {
+            return ShowOrdersTable(table, null, orders, columns);
+        }
+
+        public void ShowProducts(Table table, ProductList products)
+        {
+            foreach (var tuple in ShowProdcutsTable(table, products, "ID", "Vardas", "Kaina, eur."))
+            {
+                Product product = tuple.Item1;
+                TableRow row = tuple.Item2;
                 row.Cells.Add(new TableCell { Text = product.ID });
                 row.Cells.Add(new TableCell { Text = product.Name });
                 row.Cells.Add(new TableCell { Text = product.Price.ToString() });
-                table.Rows.Add(row);
             }
         }
 
-        public void ShowCustomers(Table table, CustomerList customers)
+        public void ShowOrders(Table table, OrderList orders)
         {
-            table.Rows.Clear();
-
-            TableRow header = new TableRow();
-            header.Cells.Add(new TableCell { Text = "Pavardė" });
-            header.Cells.Add(new TableCell { Text = "Vardas" });
-            header.Cells.Add(new TableCell { Text = "Įtaisas" });
-            header.Cells.Add(new TableCell { Text = "Įtaiso kiekis, vnt." });
-            table.Rows.Add(header);
-
-            foreach (Customer customer in customers)
+            foreach (var tuple in ShowOrdersTable(table, orders, "Pavardė", "Vardas", "Įtaisas", "Įtaisų kiekis, vnt."))
             {
-                TableRow row = new TableRow();
-                row.Cells.Add(new TableCell { Text = customer.Surname });
-                row.Cells.Add(new TableCell { Text = customer.Name });
-                row.Cells.Add(new TableCell { Text = customer.ProductID.ToString() });
-                row.Cells.Add(new TableCell { Text = customer.ProductAmount.ToString() });
-                table.Rows.Add(row);
+                Order order = tuple.Item1;
+                TableRow row = tuple.Item2;
+                row.Cells.Add(new TableCell { Text = order.CustomerSurname });
+                row.Cells.Add(new TableCell { Text = order.CustomerName });
+                row.Cells.Add(new TableCell { Text = order.ProductID.ToString() });
+                row.Cells.Add(new TableCell { Text = order.ProductAmount.ToString() });
             }
         }
 
-        public void ShowMostPopularProduct(Label label, CustomerList customers, Product product)
+        public void ShowMostPopularProducts(Table table, OrderList orders, ProductList popularProducts)
         {
-            label.Text = "Populiariausias produktas: ";
-            if (product == null)
+            foreach (var tuple in ShowProdcutsTable(table, popularProducts, "ID", "Vardas", "Įtaisų kiekis, vnt.", "Įtaisų kaina, eur."))
             {
-                label.Text = "Nėra";
-                return;
+                Product product = tuple.Item1;
+                TableRow row = tuple.Item2;
+                int sales = TaskUtils.CountProductSales(orders, product.ID);
+                row.Cells.Add(new TableCell { Text = product.ID });
+                row.Cells.Add(new TableCell { Text = product.Name });
+                row.Cells.Add(new TableCell { Text = sales.ToString() });
+                row.Cells.Add(new TableCell { Text = String.Format("{0:f2}", sales * product.Price) });
             }
-
-            label.Text += $"{product.Name}<br />";
-
-            int sales = TaskUtils.CountProductSales(customers, product.ID);
-            label.Text += $"Pardavimų kiekis: {sales} vnt.<br />";
-            label.Text += $"Pardavimų kaina: {sales*product.Price:f2} eur.";
         }
 
-        public void ShowCustomersByProduct(Table table, CustomerList customers, Product product)
+        public void ShowOrdersByProduct(Control container, OrderList orders, ProductList products)
         {
-            table.Rows.Clear();
-
-            TableRow header = new TableRow();
-            header.Cells.Add(new TableCell { Text = "Pavardė" });
-            header.Cells.Add(new TableCell { Text = "Vardas" });
-            header.Cells.Add(new TableCell { Text = "Įtaisas kiekis, vnt." });
-            header.Cells.Add(new TableCell { Text = "Kaina, eur." });
-            table.Rows.Add(header);
-
-            foreach (Customer customer in customers)
+            container.Controls.Clear();
+            foreach (Product product in products)
             {
-                TableRow row = new TableRow();
-                row.Cells.Add(new TableCell { Text = customer.Surname });
-                row.Cells.Add(new TableCell { Text = customer.Name });
-                row.Cells.Add(new TableCell { Text = customer.ProductAmount.ToString() });
-                row.Cells.Add(new TableCell { Text = (Math.Round(customer.ProductAmount*product.Price, 2)).ToString() });
-                table.Rows.Add(row);
+                OrderList filtered = TaskUtils.FilterByProduct(orders, product.ID);
+                filtered = TaskUtils.MergeOrders(filtered);
+                filtered.Sort();
+
+                Table table = new Table();
+                container.Controls.Add(table);
+                foreach (var tuple in ShowOrdersTable(table, product.Name, filtered, "Pavardė", "Vardas", "Įtaisų kiekis, vnt.", "Sumokėta, eur."))
+                {
+                    Order order = tuple.Item1;
+                    TableRow row = tuple.Item2;
+                    row.Cells.Add(new TableCell { Text = order.CustomerSurname });
+                    row.Cells.Add(new TableCell { Text = order.CustomerName });
+                    row.Cells.Add(new TableCell { Text = order.ProductAmount.ToString() });
+                    row.Cells.Add(new TableCell { Text = String.Format("{0:f2}", order.ProductAmount * product.Price, 2) });
+                }
             }
         }
     }

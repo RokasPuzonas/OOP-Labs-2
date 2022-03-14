@@ -6,14 +6,26 @@ using System.Web;
 
 namespace LD_24.Code
 {
-    public class CustomerList : IEnumerable<Customer>
+    public class OrderList : IEnumerable<Order>
     {
-        private CustomerNode head;
-        private CustomerNode tail;
-
-        public void AddToEnd(Customer customer)
+        class OrderNode
         {
-            CustomerNode node = new CustomerNode(customer);
+            public Order Data { get; set; }
+            public OrderNode Next { get; set; }
+
+            public OrderNode(Order data = null, OrderNode next = null)
+            {
+                Data = data;
+                Next = next;
+            }
+        }
+
+        private OrderNode head;
+        private OrderNode tail;
+
+        public void AddToEnd(Order customer)
+        {
+            OrderNode node = new OrderNode(customer);
             if (tail != null && head != null)
             {
                 tail.Next = node;
@@ -26,9 +38,9 @@ namespace LD_24.Code
             }
         }
 
-        public void AddToStart(Customer customer)
+        public void AddToStart(Order customer)
         {
-            CustomerNode node = new CustomerNode(customer);
+            OrderNode node = new OrderNode(customer);
             if (tail != null && head != null)
             {
                 node.Next = head;
@@ -41,10 +53,10 @@ namespace LD_24.Code
             }
         }
 
-        public Customer Get(int index)
+        public Order Get(int index)
         {
             int i = 0;
-            CustomerNode current = head;
+            OrderNode current = head;
             while (i < index && current != null)
             {
                 current = head.Next;
@@ -56,7 +68,7 @@ namespace LD_24.Code
         public int Count()
         {
             int count = 0;
-            CustomerNode current = head;
+            OrderNode current = head;
             while (current != null)
             {
                 current = current.Next;
@@ -67,10 +79,10 @@ namespace LD_24.Code
 
         public void Sort()
         {
-            for (CustomerNode nodeA = head; nodeA != null; nodeA = nodeA.Next)
+            for (OrderNode nodeA = head; nodeA != null; nodeA = nodeA.Next)
             {
-                CustomerNode min = nodeA;
-                for (CustomerNode nodeB = nodeA.Next; nodeB != null; nodeB = nodeB.Next)
+                OrderNode min = nodeA;
+                for (OrderNode nodeB = nodeA.Next; nodeB != null; nodeB = nodeB.Next)
                 {
                     if (nodeB.Data < min.Data)
                     {
@@ -78,7 +90,7 @@ namespace LD_24.Code
                     }
                 }
 
-                Customer tmp = nodeA.Data;
+                Order tmp = nodeA.Data;
                 nodeA.Data = min.Data;
                 min.Data = tmp;
             }
@@ -86,12 +98,12 @@ namespace LD_24.Code
 
         public override string ToString()
         {
-            return String.Format("CustomerList{ Count = '{0}' }", Count());
+            return String.Format("OrderList{ Count = '{0}' }", Count());
         }
 
-        public IEnumerator<Customer> GetEnumerator()
+        public IEnumerator<Order> GetEnumerator()
         {
-            CustomerNode current = head;
+            OrderNode current = head;
             while (current != null)
             {
                 yield return current.Data;
