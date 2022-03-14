@@ -6,8 +6,16 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Various functions for operations on data
+    /// </summary>
     public static class TaskUtils
     {
+        /// <summary>
+        /// Finds the most popular products by the number of sales
+        /// </summary>
+        /// <param name="orders">List of orders</param>
+        /// <returns>List of products ids</returns>
         public static List<string> FindMostPopularProducts(OrderList orders)
         {
             Dictionary<string, int> productSales = new Dictionary<string, int>();
@@ -41,6 +49,12 @@ namespace LD_24.Code
             return mostPopularProducts;
         }
 
+        /// <summary>
+        /// Counts the number of sales of a certain product
+        /// </summary>
+        /// <param name="orders">List of products</param>
+        /// <param name="product">Target product id</param>
+        /// <returns>Sales</returns>
         public static int CountProductSales(OrderList orders, string product)
         {
             int sales = 0;
@@ -54,19 +68,11 @@ namespace LD_24.Code
             return sales;
         }
 
-        public static OrderList FilterByProduct(OrderList orders, string product)
-        {
-            OrderList filtered = new OrderList();
-            foreach (Order order in orders)
-            {
-                if (order.ProductID == product)
-                {
-                    filtered.AddToEnd(order);
-                }
-            }
-            return filtered;
-        }
-
+        /// <summary>
+        /// Merge orders which have the same customer name, surname and product id into a single order.
+        /// </summary>
+        /// <param name="orders">A list of orders</param>
+        /// <returns>A list of orders where same orders have been merged</returns>
         public static OrderList MergeOrders(OrderList orders)
         {
             Dictionary<Tuple<string, string, string>, Order> ordersByName = new Dictionary<Tuple<string, string, string>, Order>();
@@ -90,6 +96,12 @@ namespace LD_24.Code
             return mergedOrders;
         }
 
+        /// <summary>
+        /// Finds a product by it's id
+        /// </summary>
+        /// <param name="products">List of products</param>
+        /// <param name="id">Target product id</param>
+        /// <returns>The product</returns>
         public static Product FindByID(ProductList products, string id)
         {
             foreach (Product product in products)
@@ -102,6 +114,12 @@ namespace LD_24.Code
             return null;
         }
 
+        /// <summary>
+        /// Find all products by their ids
+        /// </summary>
+        /// <param name="products">List of products</param>
+        /// <param name="ids">List of product ids</param>
+        /// <returns>List of products</returns>
         public static ProductList FindByID(ProductList products, List<string> ids)
         {
             ProductList foundProducts = new ProductList();
@@ -112,14 +130,22 @@ namespace LD_24.Code
             return foundProducts;
         }
 
-        public static ProductList FilterByQuantitySoldAndPrice(ProductList products, OrderList customers, int minSold, decimal maxPrice)
+        /// <summary>
+        /// Filter a list of products by sales and price.
+        /// </summary>
+        /// <param name="products">List of products</param>
+        /// <param name="orders">List of orders</param>
+        /// <param name="minSold">Minimmum sales amount</param>
+        /// <param name="maxPrice">Max product price</param>
+        /// <returns>A list of filtered products</returns>
+        public static ProductList FilterByQuantitySoldAndPrice(ProductList products, OrderList orders, int minSold, decimal maxPrice)
         {
             ProductList filtered = new ProductList();
             foreach (Product product in products)
             {
                 if (product.Price < maxPrice)
                 {
-                    int sold = CountProductSales(customers, product.ID);
+                    int sold = CountProductSales(orders, product.ID);
                     if (sold >= minSold)
                     {
                         filtered.AddToEnd(product);
@@ -129,6 +155,11 @@ namespace LD_24.Code
             return filtered;
         }
 
+        /// <summary>
+        /// Find all customer which bought only 1 type of product
+        /// </summary>
+        /// <param name="orders">List of orders</param>
+        /// <returns>A list of filtered orders</returns>
         public static OrderList FindCustomerWithSingleProduct(OrderList orders)
         {
             Dictionary<Tuple<string, string>, OrderList> ordersByCusomer = new Dictionary<Tuple<string, string>, OrderList>(); 
@@ -152,6 +183,5 @@ namespace LD_24.Code
             }
             return finalList;
         }
-
     }
 }

@@ -23,12 +23,6 @@ namespace LD_24.Code
         /// </summary>
         public decimal Price { get; set; }
 
-        /// <summary>
-        /// Constructs a new product
-        /// </summary>
-        /// <param name="ID"></param>
-        /// <param name="name"></param>
-        /// <param name="price"></param>
         public Product(string iD, string name, decimal price)
         {
             ID = iD;

@@ -9,9 +9,11 @@ using LD_24.Code;
 
 namespace LD_24
 {
+    /// <summary>
+    /// Main form
+    /// </summary>
     public partial class Forma1 : System.Web.UI.Page
     {
-        private const string targetProductID = "1";
         private const string inputFileA = "App_Data/U24a.txt";
         private const string inputFileB = "App_Data/U24b.txt";
         private const string outputFilename = "App_Data/Rezultatai.txt";

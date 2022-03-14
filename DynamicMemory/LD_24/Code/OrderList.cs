@@ -6,6 +6,9 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Stores a orders in a linked list
+    /// </summary>
     public class OrderList : IEnumerable<Order>
     {
         class OrderNode
@@ -23,6 +26,10 @@ namespace LD_24.Code
         private OrderNode head;
         private OrderNode tail;
 
+        /// <summary>
+        /// Append a value to the end of the linked list
+        /// </summary>
+        /// <param name="customer"></param>
         public void AddToEnd(Order customer)
         {
             OrderNode node = new OrderNode(customer);
@@ -38,6 +45,10 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Insert a value to the start of the linked list
+        /// </summary>
+        /// <param name="customer"></param>
         public void AddToStart(Order customer)
         {
             OrderNode node = new OrderNode(customer);
@@ -53,6 +64,10 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Get the number of values stored in linked list
+        /// </summary>
+        /// <returns>A count</returns>
         public int Count()
         {
             int count = 0;
@@ -65,6 +80,9 @@ namespace LD_24.Code
             return count;
         }
 
+        /// <summary>
+        /// Sorts the linked list
+        /// </summary>
         public void Sort()
         {
             for (OrderNode nodeA = head; nodeA != null; nodeA = nodeA.Next)

@@ -6,6 +6,9 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Stores multiple products in a linked list
+    /// </summary>
     public class ProductList : IEnumerable<Product>
     {
         class ProductNode
@@ -23,6 +26,10 @@ namespace LD_24.Code
         private ProductNode head;
         private ProductNode tail;
 
+        /// <summary>
+        /// Append a value to the end of the linked list
+        /// </summary>
+        /// <param name="product"></param>
         public void AddToEnd(Product product)
         {
             ProductNode node = new ProductNode(product);
@@ -38,6 +45,10 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Inserts a value to the start of the linked list
+        /// </summary>
+        /// <param name="product"></param>
         public void AddToStart(Product product)
         {
             ProductNode node = new ProductNode(product);
@@ -53,6 +64,10 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Get the number of values stored in the linked list
+        /// </summary>
+        /// <returns>A count</returns>
         public int Count()
         {
             int count = 0;

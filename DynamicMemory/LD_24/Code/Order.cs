@@ -5,11 +5,26 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Class used for storing a single order
+    /// </summary>
     public class Order
     {
+        /// <summary>
+        /// Surname of customer who ordered
+        /// </summary>
         public string CustomerSurname { get; set; }
+        /// <summary>
+        /// Name of customer who ordered
+        /// </summary>
         public string CustomerName { get; set; }
+        /// <summary>
+        /// ID of ordered product
+        /// </summary>
         public string ProductID { get; set; }
+        /// <summary>
+        /// Amount of ordered products
+        /// </summary>
         public int ProductAmount { get; set; }
 
         public Order(string customerSurname, string customerName, string productID, int productAmount)

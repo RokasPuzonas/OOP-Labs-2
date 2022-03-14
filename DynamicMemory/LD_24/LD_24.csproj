@@ -76,6 +76,9 @@
     <Content Include="tests\1\inputs\U24a.txt" />
     <Content Include="tests\1\inputs\U24b.txt" />
     <Content Include="tests\1\outputs\Rezultatai.txt" />
+    <Content Include="tests\2\inputs\U24a.txt" />
+    <Content Include="tests\2\inputs\U24b.txt" />
+    <Content Include="tests\2\outputs\Rezultatai.txt" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

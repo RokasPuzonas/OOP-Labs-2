@@ -8,8 +8,16 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Class used for reading and writing to files
+    /// </summary>
     public static class InOutUtils
     {
+        /// <summary>
+        /// Read lines from a file
+        /// </summary>
+        /// <param name="filename">Target filename</param>
+        /// <returns>IEnumerable of all the lines</returns>
         private static IEnumerable<string> ReadLines(string filename)
         {
             using (StreamReader reader = File.OpenText(filename))
@@ -21,6 +29,12 @@ namespace LD_24.Code
                 }
             }
         }
+
+        /// <summary>
+        /// Read products from a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <returns>A list of products</returns>
         public static ProductList ReadProducts(string filename)
         {
             ProductList products = new ProductList();
@@ -35,6 +49,11 @@ namespace LD_24.Code
             return products;
         }
 
+        /// <summary>
+        /// Read orders from a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <returns>A list of orders</returns>
         public static OrderList ReadOrders(string filename)
         {
             OrderList orders = new OrderList();
@@ -50,6 +69,12 @@ namespace LD_24.Code
             return orders;
         }
 
+        /// <summary>
+        /// Print a single table row to file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="cells">Cell data</param>
+        /// <param name="widths">Cell widths</param>
         private static void PrintTableRow(StreamWriter writer, List<string> cells, List<int> widths)
         {
             for (int i = 0; i < widths.Count; i++)
@@ -62,6 +87,14 @@ namespace LD_24.Code
             writer.WriteLine("|");
         }
 
+        /// <summary>
+        /// Print a table to a file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="header">Header above table</param>
+        /// <param name="list">Target list</param>
+        /// <param name="columns">Column names</param>
+        /// <returns>A IEnumerable for inserting values for each row</returns>
         private static IEnumerable<Tuple<object, List<String>>> PrintTable(StreamWriter writer, string header, IEnumerable list, params string[] columns)
         {
             // 0. Collect all the rows
@@ -128,6 +161,12 @@ namespace LD_24.Code
             writer.WriteLine();
         }
 
+        /// <summary>
+        /// Print orders table to file 
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="orders">List of orders</param>
+        /// <param name="header">Header above table</param>
         public static void PrintOrders(StreamWriter writer, OrderList orders, string header)
         {
             foreach (var tuple in PrintTable(writer, header, orders, "Pavardė", "Vardas", "-Įtaisas", "-Įtaiso kiekis"))
@@ -141,6 +180,13 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Print orders with prices table to file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="orders">List of orders</param>
+        /// <param name="products">List of products</param>
+        /// <param name="header">Header above table</param>
         public static void PrintOrdersWithPrices(StreamWriter writer, OrderList orders, ProductList products, string header)
         {
             foreach (var tuple in PrintTable(writer, header, orders, "Pavardė", "Vardas", "-Įtaiso kiekis, vnt.", "-Kaina, eur."))
@@ -156,6 +202,12 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Print a products table to file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="products">List of products</param>
+        /// <param name="header">Header above table</param>
         public static void PrintProducts(StreamWriter writer, ProductList products, string header)
         {
             foreach (var tuple in PrintTable(writer, header, products, "ID", "Vardas", "-Kaina"))
@@ -168,6 +220,13 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Print a table of most popular products to file
+        /// </summary>
+        /// <param name="writer">Target file</param>
+        /// <param name="orders">List of orders</param>
+        /// <param name="popularProducts">List of most popular products</param>
+        /// <param name="header">Header above table</param>
         public static void PrintMostPopularProducts(StreamWriter writer, OrderList orders, ProductList popularProducts, string header)
         {
             foreach (var tuple in PrintTable(writer, header, popularProducts, "ID", "Vardas", "-Įtaisų kiekis, vnt.", "-Įtaisų kaina, eur."))
