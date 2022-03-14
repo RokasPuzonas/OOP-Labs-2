@@ -129,5 +129,29 @@ namespace LD_24.Code
             return filtered;
         }
 
+        public static OrderList FindCustomerWithSingleProduct(OrderList orders)
+        {
+            Dictionary<Tuple<string, string>, OrderList> ordersByCusomer = new Dictionary<Tuple<string, string>, OrderList>(); 
+            foreach (var order in TaskUtils.MergeOrders(orders))
+            {
+                var key = Tuple.Create(order.CustomerName, order.CustomerSurname);
+                if (!ordersByCusomer.ContainsKey(key))
+                {
+                    ordersByCusomer.Add(key, new OrderList());
+                }
+                ordersByCusomer[key].AddToEnd(order);
+            }
+
+            OrderList finalList = new OrderList();
+            foreach (var customerOrders in ordersByCusomer.Values)
+            {
+                if (customerOrders.Count() == 1)
+                {
+                    finalList.AddToEnd(customerOrders.First());
+                }
+            }
+            return finalList;
+        }
+
     }
 }

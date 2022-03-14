@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -49,99 +50,136 @@ namespace LD_24.Code
             return orders;
         }
 
-        public static void PrintOrders(StreamWriter writer, OrderList orders, string header)
+        private static void PrintTableRow(StreamWriter writer, List<string> cells, List<int> widths)
         {
-            writer.WriteLine(new string('-', 63));
-            writer.WriteLine("| {0, -59} |", header);
-            writer.WriteLine(new string('-', 63));
-            writer.WriteLine("| {0, -15} | {1, -15} | {2, 7} | {3, 13} |", "Pavardė", "Vardas", "Įtaisas", "Įtaiso kiekis");
-            writer.WriteLine(new string('-', 63));
-            if (orders.Count() > 0)
+            for (int i = 0; i < widths.Count; i++)
             {
-                foreach (Order o in orders)
+                if (widths[i] < 0)
+                    writer.Write("| {0} ", cells[i].PadRight(-widths[i]));
+                else
+                    writer.Write("| {0} ", cells[i].PadLeft(widths[i]));
+            }
+            writer.WriteLine("|");
+        }
+
+        private static IEnumerable<Tuple<object, List<String>>> PrintTable(StreamWriter writer, string header, IEnumerable list, params string[] columns)
+        {
+            // 0. Collect all the rows
+            List<List<string>> rows = new List<List<string>>();
+            foreach (object item in list)
+            {
+                List<string> row = new List<string>();
+                yield return Tuple.Create(item, row);
+                rows.Add(row);
+            }
+
+            // 1. Determine the width of each column
+            List<int> widths = new List<int>();
+            int totalWidth = 3*(columns.Length - 1);
+            for (int i = 0; i < columns.Length; i++)
+            {
+                int width = columns[i].Length;
+                foreach (var row in rows)
                 {
-                    writer.WriteLine("| {0, -15} | {1, -15} | {2, 7} | {3, 13} |", o.CustomerSurname, o.CustomerName, o.ProductID, o.ProductAmount);
+                    width = Math.Max(row[i].Length, width);
+                }
+                widths.Add(width);
+                totalWidth += width;
+            }
+
+            // If the header is longer than the body, make the last column wider.
+            // So the table is a nice rectangle when output to the file
+            if (header.Length > totalWidth)
+            {
+                widths[widths.Count - 1] += (header.Length - totalWidth);
+                totalWidth = header.Length;
+            }
+
+            totalWidth += 2 * 2;
+
+            // 2. Adjust widths to account for aligning
+            for (int i = 0; i < columns.Length; i++)
+            {
+                if (columns[i][0] == '-')
+                {
+                    widths[i] = -widths[i];
+                    columns[i] = columns[i].Substring(1);
                 }
             }
-            else
+
+            // 3. Display the table
+            writer.WriteLine(new string('-', totalWidth));
+            writer.WriteLine("| {0} |", header.PadRight(totalWidth - 4));
+            writer.WriteLine(new string('-', totalWidth));
+            PrintTableRow(writer, new List<string>(columns), widths);
+            writer.WriteLine(new string('-', totalWidth));
+            if (rows.Count > 0)
             {
-                writer.WriteLine("| {0, -59} |", "Nėra");
+                foreach (var row in rows)
+                {
+                    PrintTableRow(writer, row, widths);
+                }
+            } else
+            {
+                writer.WriteLine("| {0} |", "Nėra".PadRight(totalWidth - 4));
             }
-            writer.WriteLine(new string('-', 63));
+            writer.WriteLine(new string('-', totalWidth));
+
             writer.WriteLine();
         }
 
-        public static void PrintOrdersWithPrices(StreamWriter writer, OrderList orders, Product product, string header)
+        public static void PrintOrders(StreamWriter writer, OrderList orders, string header)
         {
-            writer.WriteLine(new string('-', 63));
-            writer.WriteLine("| {0, -59} |", header);
-            writer.WriteLine(new string('-', 63));
-            writer.WriteLine("| {0, -15} | {1, -15} | {2, 13} | {3, 7} |", "Pavardė", "Vardas", "Įtaiso kiekis", "Kaina");
-            writer.WriteLine(new string('-', 63));
-
-            OrderList filtered = TaskUtils.FilterByProduct(orders, product.ID);
-            filtered = TaskUtils.MergeOrders(filtered);
-            filtered.Sort();
-
-            if (filtered.Count() > 0)
+            foreach (var tuple in PrintTable(writer, header, orders, "Pavardė", "Vardas", "-Įtaisas", "-Įtaiso kiekis"))
             {
-                foreach (Order o in filtered)
-                {
-                    writer.WriteLine("| {0, -15} | {1, -15} | {2, 13} | {3, 7:f2} |", o.CustomerSurname, o.CustomerName, o.ProductAmount, o.ProductAmount*product.Price);
-                }
+                Order order = (Order)tuple.Item1;
+                List<string> row = tuple.Item2;
+                row.Add(order.CustomerSurname);
+                row.Add(order.CustomerName);
+                row.Add(order.ProductID);
+                row.Add(order.ProductAmount.ToString());
             }
-            else
+        }
+
+        public static void PrintOrdersWithPrices(StreamWriter writer, OrderList orders, ProductList products, string header)
+        {
+            foreach (var tuple in PrintTable(writer, header, orders, "Pavardė", "Vardas", "-Įtaiso kiekis, vnt.", "-Kaina, eur."))
             {
-                writer.WriteLine("| {0, -59} |", "Nėra");
+                Order order = (Order)tuple.Item1;
+                List<string> row = tuple.Item2;
+                Product product = TaskUtils.FindByID(products, order.ProductID);
+
+                row.Add(order.CustomerSurname);
+                row.Add(order.CustomerName);
+                row.Add(order.ProductAmount.ToString());
+                row.Add(String.Format("{0:f2}", order.ProductAmount * product.Price));
             }
-            writer.WriteLine(new string('-', 63));
-            writer.WriteLine();
         }
 
         public static void PrintProducts(StreamWriter writer, ProductList products, string header)
         {
-            writer.WriteLine(new string('-', 42));
-            writer.WriteLine("| {0, -38} |", header);
-            writer.WriteLine(new string('-', 42));
-            writer.WriteLine("| {0, -5} | {1, -20} | {2, 7} |", "ID", "Vardas", "Kaina");
-            writer.WriteLine(new string('-', 42));
-            if (products.Count() > 0)
+            foreach (var tuple in PrintTable(writer, header, products, "ID", "Vardas", "-Kaina"))
             {
-                foreach (Product c in products)
-                {
-                    writer.WriteLine("| {0, -5} | {1, -20} | {2, 7} |", c.ID, c.Name, c.Price);
-                }
+                Product product = (Product)tuple.Item1;
+                List<string> row = tuple.Item2;
+                row.Add(product.ID);
+                row.Add(product.Name);
+                row.Add(String.Format("{0:f2}", product.Price));
             }
-            else
-            {
-                writer.WriteLine("| {0, -38} |", "Nėra");
-            }
-            writer.WriteLine(new string('-', 42));
-            writer.WriteLine();
         }
-
 
         public static void PrintMostPopularProducts(StreamWriter writer, OrderList orders, ProductList popularProducts, string header)
         {
-            writer.WriteLine(new string('-', 75));
-            writer.WriteLine("| {0, -71} |", header);
-            writer.WriteLine(new string('-', 75));
-            writer.WriteLine("| {0, -5} | {1, -20} | {2, 7} | {3} |", "ID", "Vardas", "Įtaisų kiekis, vnt.", "Įtaisų kaina, eur.");
-            writer.WriteLine(new string('-', 75));
-            if (popularProducts.Count() > 0)
+            foreach (var tuple in PrintTable(writer, header, popularProducts, "ID", "Vardas", "-Įtaisų kiekis, vnt.", "-Įtaisų kaina, eur."))
             {
-                foreach (Product p in popularProducts)
-                {
-                    int sales = TaskUtils.CountProductSales(orders, p.ID);
-                    writer.WriteLine("| {0, -5} | {1, -20} | {2, 19} | {3, 18:f2} |", p.ID, p.Name, sales, sales*p.Price);
-                }
+                Product product = (Product)tuple.Item1;
+                List<string> row = tuple.Item2;
+                int sales = TaskUtils.CountProductSales(orders, product.ID);
+                row.Add(product.ID);
+                row.Add(product.Name);
+                row.Add(sales.ToString());
+                row.Add(String.Format("{0:f2}", sales * product.Price));
             }
-            else
-            {
-                writer.WriteLine("| {0, -71} |", "Nėra");
-            }
-            writer.WriteLine(new string('-', 75));
-            writer.WriteLine();
         }
     }
 }

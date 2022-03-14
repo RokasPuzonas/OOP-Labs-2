@@ -35,9 +35,9 @@
             <asp:Label ID="Label8" runat="server" Text="Populiariausi įtaisai:"></asp:Label>
             <asp:Table ID="Table5" runat="server">
             </asp:Table>
-            <asp:Label ID="Label4" runat="server" Text="Pirkėjai pagal rūšį:"></asp:Label>
-            <div id="OrdersByProductContainer" runat="server">
-            </div>
+            <asp:Label ID="Label4" runat="server" Text="Vienos rūšies pirkėjai:"></asp:Label>
+            <asp:Table ID="Table3" runat="server">
+            </asp:Table>
             <asp:Label ID="Label7" runat="server" Text="Atrinkti įtaisai:"></asp:Label>
             <asp:Table ID="Table4" runat="server">
             </asp:Table>

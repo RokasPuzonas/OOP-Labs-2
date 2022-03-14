@@ -53,18 +53,6 @@ namespace LD_24.Code
             }
         }
 
-        public Order Get(int index)
-        {
-            int i = 0;
-            OrderNode current = head;
-            while (i < index && current != null)
-            {
-                current = head.Next;
-                i++;
-            }
-            return current.Data;
-        }
-
         public int Count()
         {
             int count = 0;

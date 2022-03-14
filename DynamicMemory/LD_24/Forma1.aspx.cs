@@ -34,11 +34,13 @@ namespace LD_24
             List<string> mostPopularProductIds = TaskUtils.FindMostPopularProducts(orders);
             ProductList mostPopularProducts = TaskUtils.FindByID(products, mostPopularProductIds);
             ProductList filteredProducts = TaskUtils.FilterByQuantitySoldAndPrice(products, orders, n, k);
+            OrderList customersWithSingleProduct = TaskUtils.FindCustomerWithSingleProduct(orders);
+            customersWithSingleProduct.Sort();
 
             ShowProducts(Table1, products);
             ShowOrders(Table2, orders);
             ShowMostPopularProducts(Table5, orders, mostPopularProducts);
-            ShowOrdersByProduct(FindControl("OrdersByProductContainer"), orders, products);
+            ShowOrdersWithPrices(Table3, customersWithSingleProduct, products);
             ShowProducts(Table4, filteredProducts);
 
             using (StreamWriter writer = new StreamWriter(Server.MapPath(outputFilename)))
@@ -46,39 +48,9 @@ namespace LD_24
                 InOutUtils.PrintProducts(writer, products, "Įtaisai");
                 InOutUtils.PrintOrders(writer, orders, "Pirkėjai");
                 InOutUtils.PrintMostPopularProducts(writer, orders, mostPopularProducts, "Populiariausi įtaisai");
-
-                writer.WriteLine("Pirkėjai pagal rūšį:");
-                foreach (Product product in products)
-                {
-                    InOutUtils.PrintOrdersWithPrices(writer, orders, product, product.Name);
-                }
-
+                InOutUtils.PrintOrdersWithPrices(writer, customersWithSingleProduct, products, "Vienos rūšies pirkėjai");
                 InOutUtils.PrintProducts(writer, filteredProducts, $"Atrinkti įtaisai (n={n}, k={k:f2})");
             }
-
-            /*
-            using (StreamWriter writer = new StreamWriter(Server.MapPath(outputFilename)))
-            {
-                
-
-                writer.Write("Populiariausias produktas: ");
-                if (PopularProduct == null)
-                {
-                    writer.WriteLine("Nėra");
-                }
-                else
-                {
-                    writer.WriteLine(PopularProduct.Name);
-                    int sales = TaskUtils.CountProductSales(Customers, PopularProduct.ID);
-                    writer.WriteLine($"Pardavimų kiekis: {sales} vnt.");
-                    writer.WriteLine($"Pardavimų kaina: {sales * PopularProduct.Price:f2} eur.");
-                }
-                writer.WriteLine();
-
-                InOutUtils.PrintCustomersWithPrices(writer, CustomersByTargetProduct, TargetProduct, $"Pirkėjai pagal rūšį ({TargetProduct.Name})");
-
-                InOutUtils.PrintProducts(writer, filteredProducts, $"Atrinkti įtaisai (n={n}, k={k:f2})");
-            }*/
         }
     }
 }
