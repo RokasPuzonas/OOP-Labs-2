@@ -13,6 +13,7 @@ on:
     paths:
       - 'report.toml'
       - 'Recursion/LD_24/**'
+      - 'DynamicMemory/LD_24/**'
 
 jobs:
   generate-and-upload:
@@ -21,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Generate report
-      uses: RokasPuzonas/ktu-oop-report-generator@v2.0.3
+      uses: RokasPuzonas/ktu-oop-report-generator@v2.0.4
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         config-filename: ${{ env.CONFIG_FILENAME }}

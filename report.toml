@@ -50,9 +50,56 @@ vietos ar picerijos, kurias visi draugai galėtų pasiekti, nėra, atspausdinkit
 
 [[sections]]
 title = "Dinaminis atminties valdymas (L2)"
+project = "DynamicMemory/LD_24"
+interface_scheme = "DynamicMemory/LD_24/interface-scheme.png"
+guide = """
+* Atsidaryti tinklalapį
+* Įvesti n ir k (n - minimalus vienetų kiekis, k - maksimali vieneto kaina)
+* Spausti "Atrinkti" mygtuką
+"""
+problem = """
+LD_24. Detalės.
+
+Internetinėje parduotuvėje pirkėjai užsisakinėja robotų gamybai reikalingus
+įtaisus. Suraskite populiariausią įtaisą, kiek tokių įtaisų parduota ir už
+kokią sumą. Sudarykite tik vienos rūšies įtaisus pirkusių pirkėjų sąrašą,
+nupirktų įtaisų skaičių ir už juos sumokėtų pinigų sumą. Sąrašas turi būti
+surikiuotas pagal nupirktų įtaisų skaičių didėjimo tvarka, pirkėjų pavardes bei
+vardus abėcėlės tvarka.
+
+Duomenys:
+• tekstiniame faile U24a.txt yra informacija apie parduotuvėje parduodamus
+įtaisus: įtaiso kodas, įtaiso pavadinimas, įtaiso kaina;
+• tekstiniame faile U24b.txt yra informacija apie pirkėjus: pirkėjo pavardė,
+vardas, pirkto įtaiso kodas, pirktų įtaisų kiekis.
+
+Į kitą rinkinį atrinkite įtaisus (įtaiso kodas, įtaiso pavadinimas, įtaiso
+kaina), kurių parduota ne mažiau kaip n vienetų ir kurių vieneto kaina ne
+didesnė kaip k eurų (n ir k įvedami klaviatūra).
+"""
 
 [[sections]]
 title = "Bendrinės klasės ir testavimas (L3)"
+problem = """
+LD_24. Detalės.
+
+Internetinėje parduotuvėje pirkėjai užsisakinėja robotų gamybai reikalingus
+įtaisus. Suraskite populiariausią įtaisą, kiek tokių įtaisų parduota ir už
+kokią sumą. Sudarykite tik vienos rūšies įtaisus pirkusių pirkėjų sąrašą,
+nupirktų įtaisų skaičių ir už juos sumokėtų pinigų sumą. Sąrašas turi būti
+surikiuotas pagal nupirktų įtaisų skaičių didėjimo tvarka, pirkėjų pavardes bei
+vardus abėcėlės tvarka.
+
+Duomenys:
+• tekstiniame faile U24a.txt yra informacija apie parduotuvėje parduodamus
+įtaisus: įtaiso kodas, įtaiso pavadinimas, įtaiso kaina;
+• tekstiniame faile U24b.txt yra informacija apie pirkėjus: pirkėjo pavardė,
+vardas, pirkto įtaiso kodas, pirktų įtaisų kiekis.
+
+Į kitą rinkinį atrinkite įtaisus (įtaiso kodas, įtaiso pavadinimas, įtaiso
+kaina), kurių parduota ne mažiau kaip n vienetų ir kurių vieneto kaina ne
+didesnė kaip k eurų (n ir k įvedami klaviatūra).
+"""
 
 [[sections]]
 title = "Polimorfizmas ir išimčių valdymas (L4)"
