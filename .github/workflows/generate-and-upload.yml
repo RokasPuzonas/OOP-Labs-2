@@ -12,8 +12,8 @@ on:
     branches: [ main ]
     paths:
       - 'report.toml'
-      - 'Recursion/LD_24/**'
-      - 'DynamicMemory/LD_24/**'
+      - 'L1/LD_24/**'
+      - 'L2/LD_24/**'
 
 jobs:
   generate-and-upload:

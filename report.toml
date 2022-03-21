@@ -5,8 +5,8 @@ lecturer = { name = "lekt. Simonavičius Kęstutis", gender = "male" }
 
 [[sections]]
 title = "Rekursija (L1)"
-project = "Recursion/LD_24"
-interface_scheme = "Recursion/LD_24/interface-scheme.png"
+project = "L1/LD_24"
+interface_scheme = "L1/LD_24/interface-scheme.png"
 guide = """
 * Atsidarius programą matysite vieną lygtuką
 * Paspaudus mygtuką geriausia susitiko vieta bus surasta arba bus parašyta,
@@ -50,8 +50,8 @@ vietos ar picerijos, kurias visi draugai galėtų pasiekti, nėra, atspausdinkit
 
 [[sections]]
 title = "Dinaminis atminties valdymas (L2)"
-project = "DynamicMemory/LD_24"
-interface_scheme = "DynamicMemory/LD_24/interface-scheme.png"
+project = "L2/LD_24"
+interface_scheme = "L2/LD_24/interface-scheme.png"
 guide = """
 * Atsidaryti tinklalapį
 * Įvesti n ir k (n - minimalus vienetų kiekis, k - maksimali vieneto kaina)
