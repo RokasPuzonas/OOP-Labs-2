@@ -8,7 +8,7 @@ namespace LD_24.Code
     /// <summary>
     /// Holds informations about a single product
     /// </summary>
-    public class Product
+    public class Product: IEquatable<Product>, IComparable<Product>
     {
         /// <summary>
         /// Identification number of product
@@ -33,6 +33,27 @@ namespace LD_24.Code
         public override string ToString()
         {
             return String.Format("Product{ID = '{0}'}", ID);
+        }
+
+        public bool Equals(Product other)
+        {
+            return ID == other.ID &&
+                   Name == other.Name &&
+                   Price == other.Price;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 560300832;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ID);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Name);
+            hashCode = hashCode * -1521134295 + Price.GetHashCode();
+            return hashCode;
+        }
+
+        public int CompareTo(Product other)
+        {
+            return ID.CompareTo(other.ID);
         }
     }
 }

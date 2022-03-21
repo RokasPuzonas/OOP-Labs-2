@@ -30,13 +30,13 @@ namespace LD_24
 
             FindControl("ResultsDiv").Visible = true;
 
-            ProductList products = InOutUtils.ReadProducts(Server.MapPath(inputFileA));
-            OrderList orders = InOutUtils.ReadOrders(Server.MapPath(inputFileB));
+            var products = InOutUtils.ReadProducts(Server.MapPath(inputFileA));
+            var orders = InOutUtils.ReadOrders(Server.MapPath(inputFileB));
 
             List<string> mostPopularProductIds = TaskUtils.FindMostPopularProducts(orders);
-            ProductList mostPopularProducts = TaskUtils.FindByID(products, mostPopularProductIds);
-            ProductList filteredProducts = TaskUtils.FilterByQuantitySoldAndPrice(products, orders, n, k);
-            OrderList customersWithSingleProduct = TaskUtils.FindCustomerWithSingleProduct(orders);
+            var mostPopularProducts = TaskUtils.FindByID(products, mostPopularProductIds);
+            var filteredProducts = TaskUtils.FilterByQuantitySoldAndPrice(products, orders, n, k);
+            var customersWithSingleProduct = TaskUtils.FindCustomerWithSingleProduct(orders);
             customersWithSingleProduct.Sort();
 
             ShowProducts(Table1, products);

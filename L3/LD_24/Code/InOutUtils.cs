@@ -35,16 +35,16 @@ namespace LD_24.Code
         /// </summary>
         /// <param name="filename">Target file</param>
         /// <returns>A list of products</returns>
-        public static ProductList ReadProducts(string filename)
+        public static LinkedList<Product> ReadProducts(string filename)
         {
-            ProductList products = new ProductList();
+            LinkedList<Product> products = new LinkedList<Product>();
             foreach (string line in ReadLines(filename))
             {
                 string[] parts = line.Split(',');
                 string id = parts[0].Trim();
                 string name = parts[1].Trim();
                 decimal price = decimal.Parse(parts[2].Trim(), CultureInfo.InvariantCulture);
-                products.AddToEnd(new Product(id, name, price));
+                products.Add(new Product(id, name, price));
             }
             return products;
         }
@@ -54,9 +54,9 @@ namespace LD_24.Code
         /// </summary>
         /// <param name="filename">Target file</param>
         /// <returns>A list of orders</returns>
-        public static OrderList ReadOrders(string filename)
+        public static LinkedList<Order> ReadOrders(string filename)
         {
-            OrderList orders = new OrderList();
+            LinkedList<Order> orders = new LinkedList<Order>();
             foreach (string line in ReadLines(filename))
             {
                 string[] parts = line.Split(',');
@@ -64,7 +64,7 @@ namespace LD_24.Code
                 string customerName = parts[1].Trim();
                 string productID = parts[2].Trim();
                 int productAmount = int.Parse(parts[3].Trim());
-                orders.AddToEnd(new Order(customerSurname, customerName, productID, productAmount));
+                orders.Add(new Order(customerSurname, customerName, productID, productAmount));
             }
             return orders;
         }
@@ -95,11 +95,11 @@ namespace LD_24.Code
         /// <param name="list">Target list</param>
         /// <param name="columns">Column names</param>
         /// <returns>A IEnumerable for inserting values for each row</returns>
-        private static IEnumerable<Tuple<object, List<String>>> PrintTable(StreamWriter writer, string header, IEnumerable list, params string[] columns)
+        private static IEnumerable<Tuple<T, List<string>>> PrintTable<T>(StreamWriter writer, string header, IEnumerable<T> list, params string[] columns)
         {
             // 0. Collect all the rows
             List<List<string>> rows = new List<List<string>>();
-            foreach (object item in list)
+            foreach (T item in list)
             {
                 List<string> row = new List<string>();
                 yield return Tuple.Create(item, row);
@@ -167,11 +167,11 @@ namespace LD_24.Code
         /// <param name="writer">Target file</param>
         /// <param name="orders">List of orders</param>
         /// <param name="header">Header above table</param>
-        public static void PrintOrders(StreamWriter writer, OrderList orders, string header)
+        public static void PrintOrders(StreamWriter writer, IEnumerable<Order> orders, string header)
         {
             foreach (var tuple in PrintTable(writer, header, orders, "Pavardė", "Vardas", "-Įtaisas", "-Įtaiso kiekis"))
             {
-                Order order = (Order)tuple.Item1;
+                Order order = tuple.Item1;
                 List<string> row = tuple.Item2;
                 row.Add(order.CustomerSurname);
                 row.Add(order.CustomerName);
@@ -187,18 +187,18 @@ namespace LD_24.Code
         /// <param name="orders">List of orders</param>
         /// <param name="products">List of products</param>
         /// <param name="header">Header above table</param>
-        public static void PrintOrdersWithPrices(StreamWriter writer, OrderList orders, ProductList products, string header)
+        public static void PrintOrdersWithPrices(StreamWriter writer, IEnumerable<Order> orders, IEnumerable<Product> products, string header)
         {
             foreach (var tuple in PrintTable(writer, header, orders, "Pavardė", "Vardas", "-Įtaiso kiekis, vnt.", "-Kaina, eur."))
             {
-                Order order = (Order)tuple.Item1;
+                Order order = tuple.Item1;
                 List<string> row = tuple.Item2;
                 Product product = TaskUtils.FindByID(products, order.ProductID);
 
                 row.Add(order.CustomerSurname);
                 row.Add(order.CustomerName);
                 row.Add(order.ProductAmount.ToString());
-                row.Add(String.Format("{0:f2}", order.ProductAmount * product.Price));
+                row.Add(string.Format("{0:f2}", order.ProductAmount * product.Price));
             }
         }
 
@@ -208,15 +208,15 @@ namespace LD_24.Code
         /// <param name="writer">Target file</param>
         /// <param name="products">List of products</param>
         /// <param name="header">Header above table</param>
-        public static void PrintProducts(StreamWriter writer, ProductList products, string header)
+        public static void PrintProducts(StreamWriter writer, IEnumerable<Product> products, string header)
         {
             foreach (var tuple in PrintTable(writer, header, products, "ID", "Vardas", "-Kaina"))
             {
-                Product product = (Product)tuple.Item1;
+                Product product = tuple.Item1;
                 List<string> row = tuple.Item2;
                 row.Add(product.ID);
                 row.Add(product.Name);
-                row.Add(String.Format("{0:f2}", product.Price));
+                row.Add(string.Format("{0:f2}", product.Price));
             }
         }
 
@@ -227,17 +227,17 @@ namespace LD_24.Code
         /// <param name="orders">List of orders</param>
         /// <param name="popularProducts">List of most popular products</param>
         /// <param name="header">Header above table</param>
-        public static void PrintMostPopularProducts(StreamWriter writer, OrderList orders, ProductList popularProducts, string header)
+        public static void PrintMostPopularProducts(StreamWriter writer, IEnumerable<Order> orders, IEnumerable<Product> popularProducts, string header)
         {
             foreach (var tuple in PrintTable(writer, header, popularProducts, "ID", "Vardas", "-Įtaisų kiekis, vnt.", "-Įtaisų kaina, eur."))
             {
-                Product product = (Product)tuple.Item1;
+                Product product = tuple.Item1;
                 List<string> row = tuple.Item2;
                 int sales = TaskUtils.CountProductSales(orders, product.ID);
                 row.Add(product.ID);
                 row.Add(product.Name);
                 row.Add(sales.ToString());
-                row.Add(String.Format("{0:f2}", sales * product.Price));
+                row.Add(string.Format("{0:f2}", sales * product.Price));
             }
         }
     }

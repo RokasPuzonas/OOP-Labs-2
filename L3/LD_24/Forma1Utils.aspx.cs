@@ -18,7 +18,7 @@ namespace LD_24
         /// <param name="list">Target list</param>
         /// <param name="columns">Columns names</param>
         /// <returns></returns>
-        private IEnumerable<Tuple<object, TableRow>> ShowTable(Table table, IEnumerable list, params string[] columns)
+        private IEnumerable<Tuple<T, TableRow>> ShowTable<T>(Table table, IEnumerable<T> list, params string[] columns)
         {
             TableRow header = new TableRow();
             foreach (string column in columns)
@@ -28,7 +28,7 @@ namespace LD_24
             table.Rows.Add(header);
 
             int n = 0;
-            foreach (object item in list)
+            foreach (T item in list)
             {
                 TableRow row = new TableRow();
                 yield return Tuple.Create(item, row);
@@ -49,11 +49,11 @@ namespace LD_24
         /// </summary>
         /// <param name="table">Target table</param>
         /// <param name="products">Target products</param>
-        public void ShowProducts(Table table, ProductList products)
+        public void ShowProducts(Table table, IEnumerable<Product> products)
         {
             foreach (var tuple in ShowTable(table, products, "ID", "Vardas", "Kaina, eur."))
             {
-                Product product = (Product)tuple.Item1;
+                Product product = tuple.Item1;
                 TableRow row = tuple.Item2;
                 row.Cells.Add(new TableCell { Text = product.ID });
                 row.Cells.Add(new TableCell { Text = product.Name });
@@ -66,11 +66,11 @@ namespace LD_24
         /// </summary>
         /// <param name="table">Target table</param>
         /// <param name="orders">Target orders</param>
-        public void ShowOrders(Table table, OrderList orders)
+        public void ShowOrders(Table table, IEnumerable<Order> orders)
         {
             foreach (var tuple in ShowTable(table, orders, "Pavardė", "Vardas", "Įtaisas", "Įtaisų kiekis, vnt."))
             {
-                Order order = (Order)tuple.Item1;
+                Order order = tuple.Item1;
                 TableRow row = tuple.Item2;
                 row.Cells.Add(new TableCell { Text = order.CustomerSurname });
                 row.Cells.Add(new TableCell { Text = order.CustomerName });
@@ -85,17 +85,17 @@ namespace LD_24
         /// <param name="table">Target table</param>
         /// <param name="orders">Target orders</param>
         /// <param name="popularProducts">List of most popular products</param>
-        public void ShowMostPopularProducts(Table table, OrderList orders, ProductList popularProducts)
+        public void ShowMostPopularProducts(Table table, IEnumerable<Order> orders, IEnumerable<Product> popularProducts)
         {
             foreach (var tuple in ShowTable(table, popularProducts, "ID", "Vardas", "Įtaisų kiekis, vnt.", "Įtaisų kaina, eur."))
             {
-                Product product = (Product)tuple.Item1;
+                Product product = tuple.Item1;
                 TableRow row = tuple.Item2;
                 int sales = TaskUtils.CountProductSales(orders, product.ID);
                 row.Cells.Add(new TableCell { Text = product.ID });
                 row.Cells.Add(new TableCell { Text = product.Name });
                 row.Cells.Add(new TableCell { Text = sales.ToString() });
-                row.Cells.Add(new TableCell { Text = String.Format("{0:f2}", sales * product.Price) });
+                row.Cells.Add(new TableCell { Text = string.Format("{0:f2}", sales * product.Price) });
             }
         }
 
@@ -105,18 +105,18 @@ namespace LD_24
         /// <param name="table">Target table</param>
         /// <param name="orders">Target orders</param>
         /// <param name="products">List of products</param>
-        public void ShowOrdersWithPrices(Table table, OrderList orders, ProductList products)
+        public void ShowOrdersWithPrices(Table table, IEnumerable<Order> orders, IEnumerable<Product> products)
         {
             foreach (var tuple in ShowTable(table, orders, "Pavardė", "Vardas", "Įtaisų kiekis, vnt.", "Sumokėta, eur."))
             {
-                Order order = (Order)tuple.Item1;
+                Order order = tuple.Item1;
                 TableRow row = tuple.Item2;
                 Product product = TaskUtils.FindByID(products, order.ProductID);
 
                 row.Cells.Add(new TableCell { Text = order.CustomerSurname });
                 row.Cells.Add(new TableCell { Text = order.CustomerName });
                 row.Cells.Add(new TableCell { Text = order.ProductAmount.ToString() });
-                row.Cells.Add(new TableCell { Text = String.Format("{0:f2}", order.ProductAmount * product.Price, 2) });
+                row.Cells.Add(new TableCell { Text = string.Format("{0:f2}", order.ProductAmount * product.Price, 2) });
             }
         }
     }

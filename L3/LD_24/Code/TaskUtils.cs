@@ -16,7 +16,7 @@ namespace LD_24.Code
         /// </summary>
         /// <param name="orders">List of orders</param>
         /// <returns>List of products ids</returns>
-        public static List<string> FindMostPopularProducts(OrderList orders)
+        public static List<string> FindMostPopularProducts(IEnumerable<Order> orders)
         {
             Dictionary<string, int> productSales = new Dictionary<string, int>();
             foreach (Order order in orders)
@@ -55,7 +55,7 @@ namespace LD_24.Code
         /// <param name="orders">List of products</param>
         /// <param name="product">Target product id</param>
         /// <returns>Sales</returns>
-        public static int CountProductSales(OrderList orders, string product)
+        public static int CountProductSales(IEnumerable<Order> orders, string product)
         {
             int sales = 0;
             foreach (Order order in orders)
@@ -73,7 +73,7 @@ namespace LD_24.Code
         /// </summary>
         /// <param name="orders">A list of orders</param>
         /// <returns>A list of orders where same orders have been merged</returns>
-        public static OrderList MergeOrders(OrderList orders)
+        public static LinkedList<Order> MergeOrders(IEnumerable<Order> orders)
         {
             Dictionary<Tuple<string, string, string>, Order> ordersByName = new Dictionary<Tuple<string, string, string>, Order>();
             foreach (var order in orders)
@@ -88,10 +88,10 @@ namespace LD_24.Code
                 }
             }
 
-            OrderList mergedOrders = new OrderList();
+            LinkedList<Order> mergedOrders = new LinkedList<Order>();
             foreach (var order in ordersByName.Values)
             {
-                mergedOrders.AddToEnd(order);
+                mergedOrders.Add(order);
             }
             return mergedOrders;
         }
@@ -102,7 +102,7 @@ namespace LD_24.Code
         /// <param name="products">List of products</param>
         /// <param name="id">Target product id</param>
         /// <returns>The product</returns>
-        public static Product FindByID(ProductList products, string id)
+        public static Product FindByID(IEnumerable<Product> products, string id)
         {
             foreach (Product product in products)
             {
@@ -120,12 +120,12 @@ namespace LD_24.Code
         /// <param name="products">List of products</param>
         /// <param name="ids">List of product ids</param>
         /// <returns>List of products</returns>
-        public static ProductList FindByID(ProductList products, List<string> ids)
+        public static LinkedList<Product> FindByID(IEnumerable<Product> products, List<string> ids)
         {
-            ProductList foundProducts = new ProductList();
+            LinkedList<Product> foundProducts = new LinkedList<Product>();
             foreach (string id in ids)
             {
-                foundProducts.AddToEnd(FindByID(products, id));
+                foundProducts.Add(FindByID(products, id));
             }
             return foundProducts;
         }
@@ -138,9 +138,9 @@ namespace LD_24.Code
         /// <param name="minSold">Minimmum sales amount</param>
         /// <param name="maxPrice">Max product price</param>
         /// <returns>A list of filtered products</returns>
-        public static ProductList FilterByQuantitySoldAndPrice(ProductList products, OrderList orders, int minSold, decimal maxPrice)
+        public static LinkedList<Product> FilterByQuantitySoldAndPrice(IEnumerable<Product> products, IEnumerable<Order> orders, int minSold, decimal maxPrice)
         {
-            ProductList filtered = new ProductList();
+            LinkedList<Product> filtered = new LinkedList<Product>();
             foreach (Product product in products)
             {
                 if (product.Price < maxPrice)
@@ -148,7 +148,7 @@ namespace LD_24.Code
                     int sold = CountProductSales(orders, product.ID);
                     if (sold >= minSold)
                     {
-                        filtered.AddToEnd(product);
+                        filtered.Add(product);
                     }
                 }
             }
@@ -160,25 +160,25 @@ namespace LD_24.Code
         /// </summary>
         /// <param name="orders">List of orders</param>
         /// <returns>A list of filtered orders</returns>
-        public static OrderList FindCustomerWithSingleProduct(OrderList orders)
+        public static LinkedList<Order> FindCustomerWithSingleProduct(IEnumerable<Order> orders)
         {
-            Dictionary<Tuple<string, string>, OrderList> ordersByCusomer = new Dictionary<Tuple<string, string>, OrderList>(); 
-            foreach (var order in TaskUtils.MergeOrders(orders))
+            var ordersByCusomer = new Dictionary<Tuple<string, string>, LinkedList<Order>>(); 
+            foreach (var order in MergeOrders(orders))
             {
                 var key = Tuple.Create(order.CustomerName, order.CustomerSurname);
                 if (!ordersByCusomer.ContainsKey(key))
                 {
-                    ordersByCusomer.Add(key, new OrderList());
+                    ordersByCusomer.Add(key, new LinkedList<Order>());
                 }
-                ordersByCusomer[key].AddToEnd(order);
+                ordersByCusomer[key].Add(order);
             }
 
-            OrderList finalList = new OrderList();
+            LinkedList<Order> finalList = new LinkedList<Order>();
             foreach (var customerOrders in ordersByCusomer.Values)
             {
                 if (customerOrders.Count() == 1)
                 {
-                    finalList.AddToEnd(customerOrders.First());
+                    finalList.Add(customerOrders.First());
                 }
             }
             return finalList;
