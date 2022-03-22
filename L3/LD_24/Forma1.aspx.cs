@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -14,8 +15,6 @@ namespace LD_24
     /// </summary>
     public partial class Forma1 : System.Web.UI.Page
     {
-        private const string inputFileA = "App_Data/U24a.txt";
-        private const string inputFileB = "App_Data/U24b.txt";
         private const string outputFilename = "App_Data/Rezultatai.txt";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,8 +29,8 @@ namespace LD_24
 
             FindControl("ResultsDiv").Visible = true;
 
-            var products = InOutUtils.ReadProducts(Server.MapPath(inputFileA));
-            var orders = InOutUtils.ReadOrders(Server.MapPath(inputFileB));
+            var products = InOutUtils.ReadProducts(FileUpload1.FileContent);
+            var orders = InOutUtils.ReadOrders(FileUpload2.FileContent);
 
             List<string> mostPopularProductIds = TaskUtils.FindMostPopularProducts(orders);
             var mostPopularProducts = TaskUtils.FindByID(products, mostPopularProductIds);
@@ -54,5 +53,6 @@ namespace LD_24
                 InOutUtils.PrintProducts(writer, filteredProducts, $"Atrinkti įtaisai (n={n}, k={k:f2})");
             }
         }
+
     }
 }

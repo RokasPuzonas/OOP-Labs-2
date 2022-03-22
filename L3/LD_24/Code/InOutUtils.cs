@@ -14,31 +14,28 @@ namespace LD_24.Code
     public static class InOutUtils
     {
         /// <summary>
-        /// Read lines from a file
+        /// Read lines from a stream
         /// </summary>
         /// <param name="filename">Target filename</param>
         /// <returns>IEnumerable of all the lines</returns>
-        private static IEnumerable<string> ReadLines(string filename)
+        private static IEnumerable<string> ReadLines(StreamReader stream)
         {
-            using (StreamReader reader = File.OpenText(filename))
+            string line;
+            while ((line = stream.ReadLine()) != null)
             {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    yield return line;
-                }
+                yield return line;
             }
         }
 
         /// <summary>
-        /// Read products from a file
+        /// Read products from a stream reader
         /// </summary>
-        /// <param name="filename">Target file</param>
+        /// <param name="reader">Target stream reader</param>
         /// <returns>A list of products</returns>
-        public static LinkedList<Product> ReadProducts(string filename)
+        public static LinkedList<Product> ReadProducts(StreamReader reader)
         {
             LinkedList<Product> products = new LinkedList<Product>();
-            foreach (string line in ReadLines(filename))
+            foreach (string line in ReadLines(reader))
             {
                 string[] parts = line.Split(',');
                 string id = parts[0].Trim();
@@ -50,14 +47,66 @@ namespace LD_24.Code
         }
 
         /// <summary>
+        /// Read products from a stream
+        /// </summary>
+        /// <param name="stream">Target stream</param>
+        /// <returns>A list of products</returns>
+        public static LinkedList<Product> ReadProducts(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return ReadProducts(reader);
+            }
+        }
+
+        /// <summary>
+        /// Read products from a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <returns>A list of products</returns>
+        public static LinkedList<Product> ReadProducts(string filename)
+        {
+            using (StreamReader reader = File.OpenText(filename))
+            {
+                return ReadProducts(reader);
+            }
+        }
+
+        /// <summary>
         /// Read orders from a file
         /// </summary>
         /// <param name="filename">Target file</param>
         /// <returns>A list of orders</returns>
         public static LinkedList<Order> ReadOrders(string filename)
         {
+            using (StreamReader reader = File.OpenText(filename))
+            {
+                return ReadOrders(reader);
+            }
+        }
+
+        /// <summary>
+        /// Read orders from a stream
+        /// </summary>
+        /// <param name="stream">Target stream</param>
+        /// <returns>A list of orders</returns>
+        public static LinkedList<Order> ReadOrders(Stream stream)
+        {
+            using (StreamReader reader = new StreamReader(stream))
+            {
+                return ReadOrders(reader);
+            }
+        }
+
+        /// <summary>
+        /// Read orders from a stream reader
+        /// </summary>
+        /// <param name="reader">Target stream reader</param>
+        /// <returns>A list of orders</returns>
+        public static LinkedList<Order> ReadOrders(StreamReader reader)
+        {
             LinkedList<Order> orders = new LinkedList<Order>();
-            foreach (string line in ReadLines(filename))
+            foreach (string line in ReadLines(reader))
             {
                 string[] parts = line.Split(',');
                 string customerSurname = parts[0].Trim();
@@ -79,10 +128,10 @@ namespace LD_24.Code
         {
             for (int i = 0; i < widths.Count; i++)
             {
-                if (widths[i] < 0)
-                    writer.Write("| {0} ", cells[i].PadRight(-widths[i]));
+                if (widths[i] > 0)
+                    writer.Write("| {0} ", cells[i].PadRight(widths[i]));
                 else
-                    writer.Write("| {0} ", cells[i].PadLeft(widths[i]));
+                    writer.Write("| {0} ", cells[i].PadLeft(-widths[i]));
             }
             writer.WriteLine("|");
         }

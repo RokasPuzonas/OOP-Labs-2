@@ -42,10 +42,8 @@ namespace LD_24.Code
         public int Count()
         {
             int count = 0;
-            Node current = head;
-            while (current != null)
+            for (Node d = head; d != null; d = d.Next)
             {
-                current = current.Next;
                 count++;
             }
             return count;
