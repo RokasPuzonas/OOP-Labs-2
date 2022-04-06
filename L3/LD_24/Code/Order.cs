@@ -27,6 +27,13 @@ namespace LD_24.Code
         /// </summary>
         public int ProductAmount { get; set; }
 
+        /// <summary>
+        /// Creates a new order
+        /// </summary>
+        /// <param name="customerSurname">The customers surname</param>
+        /// <param name="customerName">The customers name</param>
+        /// <param name="productID">Product ID</param>
+        /// <param name="productAmount">Product amount</param>
         public Order(string customerSurname, string customerName, string productID, int productAmount)
         {
             CustomerSurname = customerSurname;
@@ -35,11 +42,11 @@ namespace LD_24.Code
             ProductAmount = productAmount;
         }
 
-        public override string ToString()
-        {
-            return String.Format("Order{Name = '{0}'}", CustomerName);
-        }
-
+        /// <summary>
+        /// Compares the sorting order of this and other.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(Order other)
         {
             if (ProductAmount > other.ProductAmount)
@@ -62,6 +69,11 @@ namespace LD_24.Code
             return Equals(other) ? 0 : -1;
         }
 
+        /// <summary>
+        /// Compare if this order has the same sorting order as another one.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(Order other)
         {
             return CustomerSurname == other.CustomerSurname &&
@@ -78,6 +90,11 @@ namespace LD_24.Code
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ProductID);
             hashCode = hashCode * -1521134295 + ProductAmount.GetHashCode();
             return hashCode;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Order{Name = '{0}'}", CustomerName);
         }
     }
 }

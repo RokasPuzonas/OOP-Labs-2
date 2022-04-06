@@ -17,11 +17,21 @@ namespace LD_24
     {
         private const string outputFilename = "App_Data/Rezultatai.txt";
 
+        /// <summary>
+        /// Function that runs when the page loads
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             FindControl("ResultsDiv").Visible = false;
         }
 
+        /// <summary>
+        /// Functions that rusn when the button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button1_Click(object sender, EventArgs e)
         {
             int n = int.Parse(TextBox1.Text);

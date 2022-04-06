@@ -23,6 +23,12 @@ namespace LD_24.Code
         /// </summary>
         public decimal Price { get; set; }
 
+        /// <summary>
+        /// Creates a new product
+        /// </summary>
+        /// <param name="iD">ID</param>
+        /// <param name="name">Name</param>
+        /// <param name="price">Price</param>
         public Product(string iD, string name, decimal price)
         {
             ID = iD;
@@ -30,11 +36,11 @@ namespace LD_24.Code
             Price = price;
         }
 
-        public override string ToString()
-        {
-            return String.Format("Product{ID = '{0}'}", ID);
-        }
-
+        /// <summary>
+        /// Check if this has the same sorting order as othe product
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public bool Equals(Product other)
         {
             return ID == other.ID &&
@@ -54,6 +60,11 @@ namespace LD_24.Code
         public int CompareTo(Product other)
         {
             return ID.CompareTo(other.ID);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Product{ID = '{0}'}", ID);
         }
     }
 }

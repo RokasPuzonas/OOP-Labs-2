@@ -7,9 +7,8 @@ namespace LD_24Tests
 {
     public class OrderLinkedListTests : LinkedListTests<Order>
     {
-        private Faker faker = new Faker("en");
+        private readonly Faker faker = new Faker("en");
 
-        protected override LinkedList<Order> CreateNewList() => new LinkedList<Order>();
         protected override Order CreateItem()
         {
             string customerSurname = faker.Name.FindName();
