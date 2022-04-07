@@ -358,14 +358,14 @@ namespace K2
                 writer.WriteLine("Didžiausia mašinos kaina: {0:f2}", maxPrice);
             }
 
-            // Klausimas: KAS SUGALVOJO ŠITĄ UŽDUOTĮ?!?!?!
-            //  Niekada nebuvau matęs, kad kas būtų naudojąs interface užklojimiui vieno
-            // lauko palyginimiui pagal tipą. IR DAR tą inteface reikia panaudoti 2 kartus ant `Car`
-            // klasės, kad būtų galima patikrinti skirtingus laukus?!
-            //  Čia atrodo, kad kažkas bandė išsisukinėti, kad nereikėtų kurti 2 `Task.Filter`
-            // ir galų gale gavosi, kad reikia aplamai turėti daugiau kodo kad pasiekti tą patį
-            // rezultatą. Ir dar ant viršaus, jeigu to nepakako `MutuallyExclusiveBetween` metodai
-            // lieka nepanaudoti.
+            // Klausimas: Kas sugalvojo šitą užduotį?!?!?!
+            //   Kodėl tą inteface reikia panaudoti 2 kartus ant `Car`
+            // klasės, kad būtų galima patikrinti skirtingus laukus?! Atrodo, kad specialiai
+            // sąlyga buvo 'priplakta' su daug nereikalingų dalykų.
+            //  Dar reikėjo panaudoti `Task.Filter` du kartus su skirtingais interface kad tiktais
+            // filtruoti paprastą dalyką ir galų gale gavosi, kad reikia aplamai turėti daugiau kodo
+            // kad pasiekti tą patį rezultatą. Ir dar lieka `MutuallyExclusiveBetween` metodai nepanaudoti.
+            //
             // Ką galiu pasakyti tai, kad man labai nepatiko šita užduotis.
         }
     }
