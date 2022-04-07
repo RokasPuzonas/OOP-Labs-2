@@ -1,0 +1,5 @@
+Toshiba;123Bąčę;1200.01
+Foobar;AAA;1300.01
+Foobar;AAB;1300.01
+Foobar;BBB;1350.01
+Baz BAAAZ;The FOO - BAZ;1700.12345
