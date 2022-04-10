@@ -57,6 +57,11 @@ namespace LD_24.Code
             return hashCode;
         }
 
+        /// <summary>
+        /// Compares 2 products by their IDs
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(Product other)
         {
             return ID.CompareTo(other.ID);

@@ -137,6 +137,13 @@ namespace LD_24.Code
             writer.WriteLine("|");
         }
 
+        /// <summary>
+        /// Calculate the widths of each column of a table
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="header"></param>
+        /// <param name="columns"></param>
+        /// <returns></returns>
         private static LinkedList<int> FindTableWidths(LinkedList<LinkedList<string>> rows, string header, string[] columns)
         {
             var allWidths = new Dictionary<int, LinkedList<int>>();
