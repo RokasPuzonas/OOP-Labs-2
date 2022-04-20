@@ -24,43 +24,6 @@ namespace LD_24Tests
             return list;
         }
 
-
-        [Fact]
-        [Trait("TestedMethod", "Constructor")]
-        public void CreatingList_Shouldnt_Throw()
-        {
-            Action action = () => new LinkedList<T>();
-
-            action.Should().NotThrow();
-        }
-
-        [Theory]
-        [Trait("TestedMethod", "Constructor")]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void CreateList_From_Other_List(int count)
-        {
-            var list = CreateLoadedList(count);
-            var newList = new LinkedList<T>(list);
-
-            list.Equals(newList).Should().BeTrue();
-        }
-
-        [Theory]
-        [Trait("TestedMethod", "Add")]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void Adding_Should_Not_Throw(int count)
-        {
-            LinkedList<T> list = CreateLoadedList(count);
-            Action task = () => list.Add(CreateItem());
-
-            task.Should().NotThrow();
-        }
-
-
         [Fact]
         [Trait("TestedMethod", "IsEmpty")]
         public void New_List_Is_Empty()
@@ -81,19 +44,6 @@ namespace LD_24Tests
         }
 
         [Theory]
-        [Trait("TestedMethod", "IsEmpty")]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void Is_Empty_Should_Not_Throw(int count)
-        {
-            LinkedList<T> list = CreateLoadedList(count);
-            Action task = () => list.Add(CreateItem());
-
-            task.Should().NotThrow();
-        }
-
-        [Theory]
         [Trait("TestedMethod", "Count")]
         [InlineData(0)]
         [InlineData(1)]
@@ -103,16 +53,6 @@ namespace LD_24Tests
             LinkedList<T> list = CreateLoadedList(count);
 
             list.Count().Should().Be(count);
-        }
-
-        [Fact]
-        [Trait("TestedMethod", "GetLast")]
-        public void Assert_Last_Element_When_Empty_Doesnt_Throw()
-        {
-            LinkedList<T> list = new LinkedList<T>();
-            Func<T> task = () => list.GetLast();
-
-            task.Should().NotThrow();
         }
 
         [Theory]
@@ -129,28 +69,8 @@ namespace LD_24Tests
             list.GetLast().Should().Be(last);
         }
 
-        [Fact]
-        [Trait("TestedMethod", "GetFirst")]
-        public void Assert_First_Element_When_Empty()
-        {
-            LinkedList<T> list = new LinkedList<T>();
-
-            list.GetFirst().Should().Be(default);
-        }
-
-        [Fact]
-        [Trait("TestedMethod", "GetFirst")]
-        public void Assert_First_Element_When_Empty_Doesnt_Throw()
-        {
-            LinkedList<T> list = new LinkedList<T>();
-            Func<T> task = () => list.GetFirst();
-
-            task.Should().NotThrow();
-        }
-
         [Theory]
         [Trait("TestedMethod", "GetFirst")]
-        [InlineData(0)]
         [InlineData(1)]
         [InlineData(5)]
         public void Assert_First_Element_Value(int count)
@@ -167,19 +87,6 @@ namespace LD_24Tests
 
         [Theory]
         [Trait("TestedMethod", "RemoveLast")]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void RemoveLast_Shouldnt_Throw(int count)
-        {
-            var list = CreateLoadedList(count);
-            Action action = () => list.RemoveLast();
-
-            action.Should().NotThrow();
-        }
-
-        [Theory]
-        [Trait("TestedMethod", "RemoveLast")]
         [InlineData(1)]
         [InlineData(5)]
         public void RemoveLast_Returns_Removed_Value(int count)
@@ -191,39 +98,7 @@ namespace LD_24Tests
         }
 
         [Theory]
-        [Trait("TestedMethod", "RemoveLast")]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void After_RemoveLast_Length_Should_Decrease(int count)
-        {
-            var list = CreateLoadedList(count);
-
-            list.RemoveLast();
-            list.Count().Should().Be(count-1);
-        }
-
-        [Fact]
-        [Trait("TestedMethod", "RemoveLast")]
-        public void RemoveLast_Does_Nothing_In_Empty_List()
-        {
-            var list = new LinkedList<T>();
-
-            list.RemoveLast();
-            list.Count().Should().Be(0);
-        }
-
-        [Fact]
-        [Trait("TestedMethod", "RemoveLast")]
-        public void RemoveLast_Returns_Default_In_Empty_List()
-        {
-            var list = new LinkedList<T>();
-
-            list.RemoveLast().Should().Be(default);
-        }
-
-        [Theory]
         [Trait("TestedMethod", "IEnumerable")]
-        [InlineData(0)]
         [InlineData(1)]
         [InlineData(5)]
         public void IEnumerable_Is_Implemented_Correctly(int count)
@@ -250,57 +125,6 @@ namespace LD_24Tests
             Assert.True(list.ToString() != list.GetType().ToString());
         }
 
-        [Theory]
-        [Trait("TestedMethod", "Equals")]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void Check_If_Lists_Are_Equal(int count)
-        {
-            var list1 = CreateLoadedList(count);
-            var list2 = new LinkedList<T>(list1);
-
-            list1.Equals(list2).Should().BeTrue();
-        }
-
-        [Theory]
-        [Trait("TestedMethod", "Equals")]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void Check_If_Lists_Arent_Equal(int count)
-        {
-            var list1 = CreateLoadedList(count);
-            var list2 = CreateLoadedList(count);
-
-            list1.Equals(list2).Should().BeFalse();
-        }
-
-        [Theory]
-        [Trait("TestedMethod", "Equals")]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void Check_If_Lists_Arent_Equal_By_Size(int count)
-        {
-            var list1 = CreateLoadedList(count);
-            var list2 = new LinkedList<T>(list1);
-            list2.RemoveLast();
-
-            list1.Equals(list2).Should().BeFalse();
-        }
-
-        [Theory]
-        [Trait("TestedMethod", "Sort")]
-        [InlineData(0)]
-        [InlineData(1)]
-        [InlineData(5)]
-        public void Sort_Shouldnt_Throw(int count)
-        {
-            var list = CreateLoadedList(count);
-            Action action = () => list.Sort();
-
-            action.Should().NotThrow();
-        }
-
         [Fact]
         [Trait("TestedMethod", "Sort")]
         public void Sort_Does_Nothing_On_Empty_List()
@@ -314,7 +138,6 @@ namespace LD_24Tests
 
         [Theory]
         [Trait("TestedMethod", "Sort")]
-        [InlineData(0)]
         [InlineData(1)]
         [InlineData(5)]
         public void Items_In_Correct_Order_After_Sort(int count)
@@ -331,7 +154,6 @@ namespace LD_24Tests
 
         [Theory]
         [Trait("TestedMethod", "Sort")]
-        [InlineData(0)]
         [InlineData(1)]
         [InlineData(5)]
         public void Does_Nothing_If_Already_Sorted(int count)
