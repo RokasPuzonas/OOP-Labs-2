@@ -42,7 +42,7 @@ namespace LD_24
             var products = InOutUtils.ReadProducts(FileUpload1.FileContent);
             var orders = InOutUtils.ReadOrders(FileUpload2.FileContent);
 
-            List<string> mostPopularProductIds = TaskUtils.FindMostPopularProducts(orders);
+            var mostPopularProductIds = TaskUtils.FindMostPopularProducts(orders);
             var mostPopularProducts = TaskUtils.FindByID(products, mostPopularProductIds);
             var filteredProducts = TaskUtils.FilterByQuantitySoldAndPrice(products, orders, n, k);
             var customersWithSingleProduct = TaskUtils.FindCustomerWithSingleProduct(orders);

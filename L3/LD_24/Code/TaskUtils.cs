@@ -16,7 +16,7 @@ namespace LD_24.Code
         /// </summary>
         /// <param name="orders">List of orders</param>
         /// <returns>List of products ids</returns>
-        public static List<string> FindMostPopularProducts(IEnumerable<Order> orders)
+        public static LinkedList<string> FindMostPopularProducts(IEnumerable<Order> orders)
         {
             Dictionary<string, int> productSales = new Dictionary<string, int>();
             foreach (Order order in orders)
@@ -31,7 +31,7 @@ namespace LD_24.Code
                 }
             }
 
-            List<string> mostPopularProducts = new List<string>();
+            LinkedList<string> mostPopularProducts = new LinkedList<string>();
             int mostPopularCount = 0;
             foreach (string product in productSales.Keys)
             {
@@ -39,7 +39,7 @@ namespace LD_24.Code
                 if (count > mostPopularCount)
                 {
                     mostPopularCount = count;
-                    mostPopularProducts = new List<string> { product };
+                    mostPopularProducts = new LinkedList<string> { product };
                 } else if (count == mostPopularCount)
                 {
                     mostPopularProducts.Add(product);
@@ -120,7 +120,7 @@ namespace LD_24.Code
         /// <param name="products">List of products</param>
         /// <param name="ids">List of product ids</param>
         /// <returns>List of products</returns>
-        public static LinkedList<Product> FindByID(IEnumerable<Product> products, List<string> ids)
+        public static LinkedList<Product> FindByID(IEnumerable<Product> products, LinkedList<string> ids)
         {
             LinkedList<Product> foundProducts = new LinkedList<Product>();
             foreach (string id in ids)
