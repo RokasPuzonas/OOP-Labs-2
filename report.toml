@@ -80,6 +80,14 @@ didesnė kaip k eurų (n ir k įvedami klaviatūra).
 
 [[sections]]
 title = "Bendrinės klasės ir testavimas (L3)"
+project = "L3/LD_24"
+interface_scheme = "L3/LD_24/interface-scheme.png"
+guide = """
+* Atsidaryti tinklalapį
+* Pasirenki pradinius duomenų failus 
+* Įvesti n ir k (n - minimalus vienetų kiekis, k - maksimali vieneto kaina)
+* Spausti "Atrinkti" mygtuką
+"""
 problem = """
 LD_24. Detalės.
 
