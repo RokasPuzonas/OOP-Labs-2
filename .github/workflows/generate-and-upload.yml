@@ -14,6 +14,8 @@ on:
       - 'report.toml'
       - 'L1/LD_24/**'
       - 'L2/LD_24/**'
+      - 'L3/LD_24/**'
+      - 'L3/LD_24Tests/**'
 
 jobs:
   generate-and-upload:
@@ -22,7 +24,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Generate report
-      uses: RokasPuzonas/ktu-oop-report-generator@v2.0.4
+      uses: RokasPuzonas/ktu-oop-report-generator@v2.0.8
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         config-filename: ${{ env.CONFIG_FILENAME }}
