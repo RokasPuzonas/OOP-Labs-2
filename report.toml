@@ -81,13 +81,23 @@ didesnė kaip k eurų (n ir k įvedami klaviatūra).
 [[sections]]
 title = "Bendrinės klasės ir testavimas (L3)"
 project = "L3/LD_24"
+tests_project = "L3/LD_24Tests"
 interface_scheme = "L3/LD_24/interface-scheme.png"
 guide = """
 * Atsidaryti tinklalapį
-* Pasirenki pradinius duomenų failus 
+* Pasirenki pradinius duomenų failus
 * Įvesti n ir k (n - minimalus vienetų kiekis, k - maksimali vieneto kaina)
 * Spausti "Atrinkti" mygtuką
 """
+lecturers_comment = """
+Dictionary yra palikti kode, kad būtų galima leingviau grupuoti elementus pagal
+kažkokį raktą.
+"""
+tests_screenshots = [
+	"L3/LD_24Tests/screenshot1.PNG",
+	"L3/LD_24Tests/screenshot2.PNG",
+	"L3/LD_24Tests/screenshot3.PNG"
+]
 problem = """
 LD_24. Detalės.
 
