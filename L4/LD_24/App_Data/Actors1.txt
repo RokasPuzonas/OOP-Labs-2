@@ -1,0 +1,5 @@
+Orc
+Amandatown
+Mercedes;Warrior;24;18;13;17;Cummings, Lehner and Wilkinson
+Kelvin;Warrior;5;4;17;11;Waelchi, Kulas and Bruen
+Domenico;Archer;24;10;3;25;Jacobi Group

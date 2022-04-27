@@ -1,0 +1,12 @@
+Halfling
+Leifberg
+Clare;Warrior;17;2;7;23;14;23;19;6
+Drake;Hunter;10;15;18;3;Will - Yost
+Mike;Necromancer;18;24;3;11;23;11;22;9
+Cathryn;Warrior;20;1;14;9;2;22;6;18
+Tobin;Necromancer;12;14;21;18;Hermann, Cole and Gislason
+Yasmine;Archer;6;24;3;4;O'Keefe and Sons
+Shanna;Necromancer;3;5;15;14;Mraz, Jenkins and Bosco
+Otha;Warrior;24;22;13;15;2;13;17;13
+Cletus;Necromancer;4;8;20;16;Moen - Roberts
+Katelynn;Hunter;2;24;9;9;Feil Inc
