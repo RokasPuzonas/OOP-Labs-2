@@ -11,6 +11,7 @@ on:
   push:
     branches: [ main ]
     paths:
+      - '.github/workflows/generate-and-upload.yml'
       - 'report.toml'
       - 'L1/LD_24/**'
       - 'L2/LD_24/**'
@@ -26,7 +27,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Generate report
-      uses: RokasPuzonas/ktu-oop-report-generator@v2.0.9
+      uses: RokasPuzonas/ktu-oop-report-generator@v2.0.10
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
         config-filename: ${{ env.CONFIG_FILENAME }}
