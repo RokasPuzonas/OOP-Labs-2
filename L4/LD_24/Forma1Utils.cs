@@ -9,7 +9,15 @@ namespace LD_24
 {
     public partial class Forma1 : System.Web.UI.Page
     {
-        public static IEnumerable<Tuple<T, TableRow>> ShowTable<T>(Table table, IEnumerable<T> list, params string[] columns)
+        /// <summary>
+        /// Show a table to the Web UI
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="table"></param>
+        /// <param name="list"></param>
+        /// <param name="columns"></param>
+        /// <returns></returns>
+        public static IEnumerable<Tuple<T, TableCellCollection>> ShowTable<T>(Table table, IEnumerable<T> list, params string[] columns)
         {
             TableHeaderRow header = new TableHeaderRow();
             foreach (string column in columns)
@@ -22,7 +30,7 @@ namespace LD_24
             foreach (T item in list)
             {
                 TableRow row = new TableRow();
-                yield return Tuple.Create(item, row);
+                yield return Tuple.Create(item, row.Cells);
                 table.Rows.Add(row);
                 noRows = false;
             }
@@ -35,33 +43,43 @@ namespace LD_24
             }
         }
 
+        /// <summary>
+        /// Show a list of actors in a table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="actors"></param>
         public static void ShowActors(Table table, IEnumerable<Actor> actors)
         {
             foreach (var tuple in ShowTable(table, actors, "Rasė", "Miestas", "Vardas", "Klasė", "Gyvybė", "Mana", "Žala", "Šarvai"))
             {
-                Actor actor = tuple.Item1;
-                TableRow row = tuple.Item2;
-                row.Cells.Add(new TableCell { Text = actor.Race });
-                row.Cells.Add(new TableCell { Text = actor.StartingTown });
-                row.Cells.Add(new TableCell { Text = actor.Name });
-                row.Cells.Add(new TableCell { Text = actor.Class });
-                row.Cells.Add(new TableCell { Text = actor.Health.ToString() });
-                row.Cells.Add(new TableCell { Text = actor.Mana.ToString() });
-                row.Cells.Add(new TableCell { Text = actor.Attack.ToString() });
-                row.Cells.Add(new TableCell { Text = actor.Defense.ToString() });
+                var actor = tuple.Item1;
+                var cells = tuple.Item2;
+                cells.Add(new TableCell { Text = actor.Race });
+                cells.Add(new TableCell { Text = actor.StartingTown });
+                cells.Add(new TableCell { Text = actor.Name });
+                cells.Add(new TableCell { Text = actor.Class });
+                cells.Add(new TableCell { Text = actor.Health.ToString() });
+                cells.Add(new TableCell { Text = actor.Mana.ToString() });
+                cells.Add(new TableCell { Text = actor.Attack.ToString() });
+                cells.Add(new TableCell { Text = actor.Defense.ToString() });
             }
         }
 
+        /// <summary>
+        /// Show a list of healthy actors to a table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="actors"></param>
         public static void ShowHealthyActors(Table table, IEnumerable<Actor> actors)
         {
             foreach (var tuple in ShowTable(table, actors, "Vardas", "Rasė", "Klasė", "Gyvybė"))
             {
-                Actor actor = tuple.Item1;
-                TableRow row = tuple.Item2;
-                row.Cells.Add(new TableCell { Text = actor.Name });
-                row.Cells.Add(new TableCell { Text = actor.Race });
-                row.Cells.Add(new TableCell { Text = actor.Class });
-                row.Cells.Add(new TableCell { Text = actor.Health.ToString() });
+                var actor = tuple.Item1;
+                var cells = tuple.Item2;
+                cells.Add(new TableCell { Text = actor.Name });
+                cells.Add(new TableCell { Text = actor.Race });
+                cells.Add(new TableCell { Text = actor.Class });
+                cells.Add(new TableCell { Text = actor.Health.ToString() });
             }
         }
     }

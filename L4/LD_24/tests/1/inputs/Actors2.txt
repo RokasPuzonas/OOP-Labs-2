@@ -1,0 +1,7 @@
+Dwarf
+Verdiebury
+Toney;Hunter;20;2;9;11;13;6;17;16
+Andreanne;Warrior;14;25;6;23;Rempel LLC
+Octavia;Necromancer;16;20;13;14;Considine, Runte and Mosciski
+Ocie;Warrior;14;16;22;7;14;3;3;18
+Vicente;Hunter;16;20;24;3;Farrell, Watsica and O'Keefe

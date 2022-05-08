@@ -10,6 +10,9 @@ using System.Diagnostics;
 
 namespace LD_24
 {
+    /// <summary>
+    /// Main Form
+    /// </summary>
     public partial class Forma1 : System.Web.UI.Page
     {
         private List<Actor> actors = null;

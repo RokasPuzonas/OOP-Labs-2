@@ -13,7 +13,7 @@ guide = """
 kad neįmanoma susitiki.
 """
 problem = """
-LD_24. Susitikimas.
+LD_24. **Susitikimas.**
 
 Grupė draugų nusprendė susitikti mieste, o po to kartu eiti valgyti picos. Bet
 tuomet jie susiginčijo, kur geriausia susitikti, ir kurioje picerijoje valgyti.
@@ -58,7 +58,7 @@ guide = """
 * Spausti "Atrinkti" mygtuką
 """
 problem = """
-LD_24. Detalės.
+LD_24. **Detalės.**
 
 Internetinėje parduotuvėje pirkėjai užsisakinėja robotų gamybai reikalingus
 įtaisus. Suraskite populiariausią įtaisą, kiek tokių įtaisų parduota ir už
@@ -99,7 +99,7 @@ tests_screenshots = [
 	"L3/LD_24Tests/screenshot3.PNG"
 ]
 problem = """
-LD_24. Detalės.
+LD_24. **Detalės.**
 
 Internetinėje parduotuvėje pirkėjai užsisakinėja robotų gamybai reikalingus
 įtaisus. Suraskite populiariausią įtaisą, kiek tokių įtaisų parduota ir už
@@ -121,6 +121,50 @@ didesnė kaip k eurų (n ir k įvedami klaviatūra).
 
 [[sections]]
 title = "Polimorfizmas ir išimčių valdymas (L4)"
+project = "L4/LD_24"
+tests_project = "L4/LD_24Tests"
+interface_scheme = "L4/LD_24/interface-scheme.png"
+guide = """
+* Atsidaryti tinklalapį
+* Įvesti minimalus herojaus intelekto kiekį
+* Įvesti maksimalus NPC žalos kiekį
+* Spausti "Vykdyti" mygtuką
+"""
+tests_screenshots = [
+	"L4/LD_24Tests/screenshot1.png"
+]
+problem = """
+U4_24. **Kompiuterinis žaidimas.**
+
+Žaidimo pasaulyje yra dviejų tipų veikėjai - žaidėjo valdomi herojai bei
+kompiuterio valdomi „NPC“ (non playable character). Sugrupavote žaidimo veikėjus pagal rases, ir surašėte
+jų duomenis į skirtingus failus. Duomenų formatas toks: pirmoje eilutėje – rasės pavadinimas. Antroje –
+pradinis miestas. Toliau informacija apie žaidimo veikėjus. Sukurkite abstrakčią klasę „Actor“ (savybės -
+vardas, klasė, gyvybės taškai, mana, žalos taškai, gynybos taškai), kurią paveldės klasės “Hero” (savybės –
+jėga, vikrumas, intelektas, ypatinga galia), “NPC” (savybė – gildija).
+
+* Raskite kiekvienos klasės daugiausiai gyvybės taškų turintį veikėją, ekrane atspausdinkite jo vardą,
+rasę, klasę ir gyvybės taškų kiekį.
+* Sudarykite visų veikėjų klasių sąrašą ir įrašykite į failą „Klasės.csv“ .
+* Norite, jog kiekviena rasė turėtų bent po vieną kiekvienos klasės herojų ir NPC. Raskite, kokių
+klasių herojų ar NPC „trūksta“ kiekvienai rasei. Į failą „Trūkstami.csv“ įrašykite kiekvienos rasės
+pavadinimą, trūkstamų herojų klasių sąrašą, trūkstamų NPC klasių sąrašą.
+* Sudarykite ir surikiuokite bendrą veikėjų rinktinę. Į šią rinktinę patenka herojai, jei jų intelekto
+reikšmė viršija nurodytą dydį. Į šią rinktinę patenka NPC, jei jų žalos taškai neviršija nurodyto
+dydžio. Herojus rikiuokite pagal intelektą, o NPC – pagal žalos taškus. Rezultatus įrašykite į failą
+„Rinktine.csv“.
+"""
 
 [[sections]]
 title = "Deklaratyvusis programavimas (L5)"
+problem = """
+LDD_24. **Leidėjai.**
+
+Žmonės užsisako spaudą. Užsakymas vyksta metų ribose. Pirmoje failo eilutėje
+nurodyta įvedimo data (failų daug), o tolesnėse eilutėse nurodyta prenumeratoriaus pavardė, adresas,
+laikotarpio pradžia (nurodyta sveiku skaičiumi 1..12), laikotarpio ilgis, leidinio kodas, leidinių kiekis.
+Atskirame faile duota tokia informacija apie leidinius: kodas, pavadinimas, leidėjo pavadinimas, vieno
+mėnesio kaina. Suskaičiuoti kiekvienam leidėjui nurodyto mėnesio (įvedama klaviatūra) pajamas.
+Atspausdinkite leidėjų pajamas, surikiuotas pagal dydį ir leidėjų pavadinimus, nurodant ir leidėjų
+leidinius su jų atneštomis pajamomis. Leidėjų pavadinimai neturi kartotis.
+"""

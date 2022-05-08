@@ -9,12 +9,20 @@ using System.Text;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Utility class for reading/writing to files
+    /// </summary>
     public static class InOutUtils
     {
         private static readonly List<string> Races = new List<string> { "Human", "Orc", "Elf", "Dwarf", "Fairy", "Halfling" };
         private static readonly List<string> Classess = new List<string> { "Warrior", "Hunter", "Archer", "Mage", "Necromancer" };
         private static readonly Faker faker = new Faker();
 
+        /// <summary>
+        /// Read line by lines from a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <returns>Lines</returns>
         public static IEnumerable<string> ReadLines(string filename)
         {
             using (var reader = new StreamReader(filename))
@@ -31,6 +39,12 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Read actors from a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <returns>A list of actors</returns>
+        /// <exception cref="Exception">Throws if a given line in a file is incorrect</exception>
         public static List<Actor> ReadActors(string filename)
         {
             var actors = new List<Actor>();
@@ -68,13 +82,17 @@ namespace LD_24.Code
             return actors;
         }
 
+        /// <summary>
+        /// Generate file with actors
+        /// </summary>
+        /// <param name="filename">Target file</param>
         public static void GenerateFakeActors(string filename)
         {
             using (var writer = new StreamWriter(filename))
             {
                 writer.WriteLine(faker.PickRandom(Races));
                 writer.WriteLine(faker.Address.City());
-                int count = faker.Random.Number(2, 10);
+                int count = faker.Random.Number(1, 5);
                 for (int i = 0; i < count; i++)
                 {
                     string name = faker.Name.FirstName();
@@ -100,6 +118,13 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Read all files from a directory that have actors
+        /// </summary>
+        /// <param name="directory"></param>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static List<Actor> ReadActorsDir(string directory, string pattern = "*.txt")
         {
             if (!Directory.Exists(directory))
@@ -114,6 +139,11 @@ namespace LD_24.Code
             return merged;
         }
 
+        /// <summary>
+        /// Writes a list of classes to a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <param name="classes">Target classes</param>
         public static void PrintClassesCSV(string filename, List<string> classes)
         {
             using (var writer = new StreamWriter(filename, false, Encoding.UTF8))
@@ -125,6 +155,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Prints missing actors to a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <param name="missingActors">Missing actor race names</param>
         public static void PrintMissingActors(string filename, Tuple<List<string>, List<string>> missingActors)
         {
             using (var writer = new StreamWriter(filename, false, Encoding.UTF8))
@@ -134,6 +169,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Prints a team of actors to a file
+        /// </summary>
+        /// <param name="filename">Target file</param>
+        /// <param name="team">Target actors</param>
         public static void PrintTeam(string filename, List<Actor> team)
         {
             using (var writer = new StreamWriter(filename, false, Encoding.UTF8))

@@ -1,0 +1,7 @@
+Orc
+East Chelseyberg
+Shaina;Archer;20;2;23;1;Wintheiser, Heidenreich and Hansen
+Lucie;Archer;12;16;14;2;9;5;19;15
+Doyle;Archer;12;14;18;3;10;10;18;1
+Amir;Mage;15;9;16;2;Steuber Group
+Muhammad;Necromancer;2;19;12;2;3;7;22;2

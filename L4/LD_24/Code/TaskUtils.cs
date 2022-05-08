@@ -5,8 +5,16 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Utility class for storing unrelated methods
+    /// </summary>
     public static class TaskUtils
     {
+        /// <summary>
+        /// Find the actors which have the most health by class
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <returns></returns>
         public static Dictionary<string, int> FindMostHealthByClass(List<Actor> actors)
         {
             Dictionary<string, int> mostHealth = new Dictionary<string, int>();
@@ -23,6 +31,11 @@ namespace LD_24.Code
             return mostHealth;
         }
 
+        /// <summary>
+        /// Find all unique classes from a list of actors
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <returns></returns>
         public static List<string> FindAllClasses(List<Actor> actors)
         {
             List<string> result = new List<string>();
@@ -36,6 +49,11 @@ namespace LD_24.Code
             return result;
         }
 
+        /// <summary>
+        /// Find all unique races from a list of actors
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <returns></returns>
         public static List<string> FindAllRaces(List<Actor> actors)
         {
             List<string> races = new List<string>();
@@ -49,6 +67,11 @@ namespace LD_24.Code
             return races;
         }
 
+        /// <summary>
+        /// Finds which races are missing an NPC or Hero
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <returns>A tuple where Item1 is missing Heros, and Item2 is missing NPCs</returns>
         public static Tuple<List<string>, List<string>> FindMissingActors(List<Actor> actors)
         {
             var races = FindAllRaces(actors);
@@ -68,6 +91,11 @@ namespace LD_24.Code
             return Tuple.Create(missingHeroes, missingNPCs);
         }
 
+        /// <summary>
+        /// Find the actors which have the most health in their respective classes
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <returns></returns>
         public static List<Actor> FilterMostHealthByClass(List<Actor> actors)
         {
             List<Actor> filtered = new List<Actor>();
@@ -82,6 +110,12 @@ namespace LD_24.Code
             return filtered;
         }
 
+        /// <summary>
+        /// Filter out heros which, don't meet the min intellect (exclusively)
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <param name="minIntellect"></param>
+        /// <returns></returns>
         public static List<Hero> FilterHeroesByIntellect(List<Actor> actors, int minIntellect)
         {
             List<Hero> filtered = new List<Hero>();
@@ -95,6 +129,12 @@ namespace LD_24.Code
             return filtered;
         }
 
+        /// <summary>
+        /// Filter out NPC which, don't meet the max attack (exclusively)
+        /// </summary>
+        /// <param name="actors"></param>
+        /// <param name="maxAttack"></param>
+        /// <returns></returns>
         public static List<NPC> FilterNPCsByAttack(List<Actor> actors, int maxAttack)
         {
             List<NPC> filtered = new List<NPC>();

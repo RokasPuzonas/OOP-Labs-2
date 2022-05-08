@@ -71,9 +71,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Actors1.txt" />
-    <Content Include="App_Data\Actors2.txt" />
-    <Content Include="App_Data\Actors3.txt" />
     <Content Include="Forma1.aspx" />
     <Content Include="Styles\main.css" />
     <Content Include="Web.config" />
@@ -97,9 +94,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Klasės.csv" />
-    <Content Include="App_Data\Trūkstami.csv" />
-    <Content Include="App_Data\Riktine.csv" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -108,7 +102,13 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="tests\1\inputs\" />
+    <Folder Include="tests\1\outputs\" />
+    <Folder Include="tests\2\inputs\" />
+    <Folder Include="tests\2\outputs\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
