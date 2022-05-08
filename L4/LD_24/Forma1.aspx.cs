@@ -19,6 +19,7 @@ namespace LD_24
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Generate initial data files if they don't exist
             string[] actorFiles = { "Actors1.txt", "Actors2.txt", "Actors3.txt" };
             foreach (string name in actorFiles)
             {
@@ -29,6 +30,7 @@ namespace LD_24
                 }
             }
 
+            // Read actors from folder
             try
             {
                 actors = InOutUtils.ReadActorsDir(Server.MapPath("App_Data"));
