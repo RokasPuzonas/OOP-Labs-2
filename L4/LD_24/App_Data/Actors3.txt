@@ -4,4 +4,4 @@ Will;Mage;18;24;21;3;25;17;4;21
 Brennan;Mage;2;5;4;8;Lindgren, Spinka and Walsh
 Jannie;Hunter;15;5;25;10;Kub - Flatley
 Nicolette;Archer;11;9;3;17;16;10;18;15
-Noe;Warr
+

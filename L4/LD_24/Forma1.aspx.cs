@@ -15,7 +15,7 @@ namespace LD_24
     /// </summary>
     public partial class Forma1 : System.Web.UI.Page
     {
-        private List<Actor> actors = null;
+        private List<List<Actor>> actorss = null;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,48 +30,66 @@ namespace LD_24
                 }
             }
 
+            File.Delete(Server.MapPath("App_Data/Rezultatai.txt"));
+
             // Read actors from folder
             try
             {
-                actors = InOutUtils.ReadActorsDir(Server.MapPath("App_Data"));
+                actorss = InOutUtils.ReadActorsDir(Server.MapPath("App_Data"));
             } catch (Exception ex)
             {
                 Label5.Text = ex.Message;
             }
-
-            Label1.Visible = false;
-            Label2.Visible = false;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (Label5.Text.Length > 0) return;
-
-            Label1.Visible = true;
-            Label2.Visible = true;
+            if (actorss == null) return;
+            var actors = actorss.SelectMany(x => x).ToList();
 
             int minHeroIntellect = int.Parse(TextBox1.Text);
             int maxNPCAttack = int.Parse(TextBox2.Text);
 
-            ShowActors(Table1, actors);
-
             var heatlhyActors = TaskUtils.FilterMostHealthByClass(actors);
-            ShowHealthyActors(Table2, heatlhyActors);
-
             var allClasses = TaskUtils.FindAllClasses(actors);
-            InOutUtils.PrintClassesCSV(Server.MapPath("App_Data/Klasės.csv"), allClasses);
-
             var missingActors = TaskUtils.FindMissingActors(actors);
-            InOutUtils.PrintMissingActors(Server.MapPath("App_Data/Trūkstami.csv"), missingActors);
 
-            var intellectHeroes = TaskUtils.FilterHeroesByIntellect(actors, minHeroIntellect);
-            var strengthNPCs = TaskUtils.FilterNPCsByAttack(actors, maxNPCAttack);
-            intellectHeroes.Sort();
-            strengthNPCs.Sort();
+            var intellectHeroes = actors
+                .Where(a => a is Hero)
+                .Where(a => ((Hero)a).Intellect > minHeroIntellect)
+                .OrderBy(a => ((Hero)a).Intellect)
+                .ToList();
+            var strengthNPCs = actors
+                .Where(a => a is NPC)
+                .Where(a => a.Attack < maxNPCAttack)
+                .OrderBy(a => a.Attack)
+                .ToList();
             var team = new List<Actor>();
             team.AddRange(intellectHeroes);
             team.AddRange(strengthNPCs);
-            InOutUtils.PrintTeam(Server.MapPath("App_Data/Riktine.csv"), team);
+
+            using (var writer = new ResultsWriter(Server.MapPath("App_Data/Rezultatai.txt"), ResultsDiv))
+            {
+                writer.WriteLine("Pradiniai duomenys:");
+                InOutUtils.ShowActors(writer, actorss);
+
+                writer.WriteLine("Daugiausiai gyvybės taškų pagal klases:");
+                InOutUtils.ShowHealthyActors(writer, heatlhyActors);
+
+                InOutUtils.PrintClassesCSV(Server.MapPath("App_Data/Klasės.csv"), allClasses);
+                writer.WriteLine("Visos klasės:");
+                writer.WriteList(allClasses);
+
+                InOutUtils.PrintMissingActors(Server.MapPath("App_Data/Trūkstami.csv"), missingActors);
+                writer.WriteLine("Trūkstamos herojų rasės:");
+                writer.WriteList(missingActors.Item1);
+                writer.WriteLine("Trūkstamos NPC rasės:");
+                writer.WriteList(missingActors.Item2);
+
+                InOutUtils.PrintTeam(Server.MapPath("App_Data/Riktine.csv"), team);
+                writer.WriteLine("Bendra veikėjų rinktinė:");
+                InOutUtils.ShowActors(writer, team);
+            }
         }
     }
 }

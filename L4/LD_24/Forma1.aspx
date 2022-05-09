@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+	<title></title>
     <link href="~/Styles/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -24,12 +25,7 @@
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Vykdyti" />
             <br />
             <br />
-            <asp:Label ID="Label1" runat="server" Text="Pradiniai duomenys:"></asp:Label>
-            <asp:Table ID="Table1" runat="server">
-            </asp:Table>
-            <asp:Label ID="Label2" runat="server" Text="Daugiausiai gyvybės taškų pagal klases:"></asp:Label>
-            <asp:Table ID="Table2" runat="server">
-            </asp:Table>
+            <div id="ResultsDiv" runat="server"></div>
         </div>
     </form>
 </body>

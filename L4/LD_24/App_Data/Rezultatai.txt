@@ -1,0 +1,65 @@
+﻿Pradiniai duomenys:
+------------------------------------------------------------------------------
+| Rasė | Miestas        | Vardas   | Klasė   | Gyvybė | Mana | Žala | Šarvai |
+------------------------------------------------------------------------------
+| Elf  | Konopelskitown | Gail     | Mage    | 6      | 23   | 24   | 17     |
+| Elf  | Konopelskitown | Garret   | Mage    | 5      | 11   | 1    | 10     |
+| Elf  | Konopelskitown | Maybelle | Hunter  | 21     | 11   | 25   | 17     |
+| Elf  | Konopelskitown | Amy      | Warrior | 11     | 5    | 13   | 15     |
+| Elf  | Konopelskitown | Natalie  | Warrior | 18     | 23   | 25   | 14     |
+------------------------------------------------------------------------------
+
+----------------------------------------------------------------------------------
+| Rasė | Miestas        | Vardas   | Klasė       | Gyvybė | Mana | Žala | Šarvai |
+----------------------------------------------------------------------------------
+| Elf  | Port Sierraton | Lyla     | Archer      | 5      | 10   | 5    | 21     |
+| Elf  | Port Sierraton | Ruthe    | Necromancer | 7      | 21   | 11   | 10     |
+| Elf  | Port Sierraton | Berneice | Mage        | 6      | 23   | 23   | 6      |
+----------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+| Rasė | Miestas         | Vardas    | Klasė  | Gyvybė | Mana | Žala | Šarvai |
+-------------------------------------------------------------------------------
+| Orc  | North Anastacio | Will      | Mage   | 18     | 24   | 21   | 3      |
+| Orc  | North Anastacio | Brennan   | Mage   | 2      | 5    | 4    | 8      |
+| Orc  | North Anastacio | Jannie    | Hunter | 15     | 5    | 25   | 10     |
+| Orc  | North Anastacio | Nicolette | Archer | 11     | 9    | 3    | 17     |
+-------------------------------------------------------------------------------
+
+Daugiausiai gyvybės taškų pagal klases:
+-------------------------------------------
+| Vardas    | Rasė | Klasė       | Gyvybė |
+-------------------------------------------
+| Maybelle  | Elf  | Hunter      | 21     |
+| Natalie   | Elf  | Warrior     | 18     |
+| Ruthe     | Elf  | Necromancer | 7      |
+| Will      | Orc  | Mage        | 18     |
+| Nicolette | Orc  | Archer      | 11     |
+-------------------------------------------
+
+Visos klasės:
+* Mage
+* Hunter
+* Warrior
+* Archer
+* Necromancer
+
+Trūkstamos herojų rasės:
+Nėra
+
+Trūkstamos NPC rasės:
+Nėra
+
+Bendra veikėjų rinktinė:
+--------------------------------------------------------------------------------
+| Rasė | Miestas         | Vardas    | Klasė   | Gyvybė | Mana | Žala | Šarvai |
+--------------------------------------------------------------------------------
+| Elf  | Konopelskitown  | Amy       | Warrior | 11     | 5    | 13   | 15     |
+| Orc  | North Anastacio | Will      | Mage    | 18     | 24   | 21   | 3      |
+| Elf  | Konopelskitown  | Maybelle  | Hunter  | 21     | 11   | 25   | 17     |
+| Elf  | Konopelskitown  | Garret    | Mage    | 5      | 11   | 1    | 10     |
+| Orc  | North Anastacio | Nicolette | Archer  | 11     | 9    | 3    | 17     |
+| Orc  | North Anastacio | Brennan   | Mage    | 2      | 5    | 4    | 8      |
+| Elf  | Port Sierraton  | Lyla      | Archer  | 5      | 10   | 5    | 21     |
+--------------------------------------------------------------------------------
+

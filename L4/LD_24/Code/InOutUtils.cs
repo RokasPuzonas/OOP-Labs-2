@@ -125,16 +125,16 @@ namespace LD_24.Code
         /// <param name="pattern"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        public static List<Actor> ReadActorsDir(string directory, string pattern = "*.txt")
+        public static List<List<Actor>> ReadActorsDir(string directory, string pattern = "*.txt")
         {
             if (!Directory.Exists(directory))
             {
                 throw new Exception(string.Format("Directory '{0}' not found", directory));
             }
-            var merged = new List<Actor>();
+            var merged = new List<List<Actor>>();
             foreach (var filename in Directory.GetFiles(directory, pattern))
             {
-                merged.AddRange(ReadActors(filename));
+                merged.Add(ReadActors(filename));
             }
             return merged;
         }
@@ -182,6 +182,59 @@ namespace LD_24.Code
                 {
                     writer.WriteLine(actor.ToCSVLine());
                 }
+            }
+        }
+
+        /// <summary>
+        /// Show a list of actors in a table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="actors"></param>
+        public static void ShowActors(ResultsWriter writer, IEnumerable<IEnumerable<Actor>> actorss)
+        {
+            foreach (var actors in actorss)
+            {
+                ShowActors(writer, actors);
+            }
+        }
+
+        /// <summary>
+        /// Show a list of actors in a table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="actors"></param>
+        public static void ShowActors(ResultsWriter writer, IEnumerable<Actor> actors)
+        {
+            foreach (var tuple in writer.WriteTable(actors, "Rasė", "Miestas", "Vardas", "Klasė", "Gyvybė", "Mana", "Žala", "Šarvai"))
+            {
+                var actor = tuple.Item1;
+                var row = tuple.Item2;
+                row.Add(actor.Race);
+                row.Add(actor.StartingTown);
+                row.Add(actor.Name);
+                row.Add(actor.Class);
+                row.Add(actor.Health);
+                row.Add(actor.Mana);
+                row.Add(actor.Attack);
+                row.Add(actor.Defense);
+            }
+        }
+
+        /// <summary>
+        /// Show a list of healthy actors to a table
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="actors"></param>
+        public static void ShowHealthyActors(ResultsWriter writer, IEnumerable<Actor> actors)
+        {
+            foreach (var tuple in writer.WriteTable(actors, "Vardas", "Rasė", "Klasė", "Gyvybė"))
+            {
+                var actor = tuple.Item1;
+                var row = tuple.Item2;
+                row.Add(actor.Name);
+                row.Add(actor.Race);
+                row.Add(actor.Class);
+                row.Add(actor.Health);
             }
         }
     }

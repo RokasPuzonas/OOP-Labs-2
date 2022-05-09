@@ -109,43 +109,5 @@ namespace LD_24.Code
             }
             return filtered;
         }
-
-        /// <summary>
-        /// Filter out heros which, don't meet the min intellect (exclusively)
-        /// </summary>
-        /// <param name="actors"></param>
-        /// <param name="minIntellect"></param>
-        /// <returns></returns>
-        public static List<Hero> FilterHeroesByIntellect(List<Actor> actors, int minIntellect)
-        {
-            List<Hero> filtered = new List<Hero>();
-            foreach (var actor in actors)
-            {
-                if (actor is Hero && (actor as Hero).Intellect > minIntellect)
-                {
-                    filtered.Add(actor as Hero);
-                }
-            }
-            return filtered;
-        }
-
-        /// <summary>
-        /// Filter out NPC which, don't meet the max attack (exclusively)
-        /// </summary>
-        /// <param name="actors"></param>
-        /// <param name="maxAttack"></param>
-        /// <returns></returns>
-        public static List<NPC> FilterNPCsByAttack(List<Actor> actors, int maxAttack)
-        {
-            List<NPC> filtered = new List<NPC>();
-            foreach (var actor in actors)
-            {
-                if (actor is NPC && actor.Attack < maxAttack)
-                {
-                    filtered.Add(actor as NPC);
-                }
-            }
-            return filtered;
-        }
     }
 }

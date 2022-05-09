@@ -8,7 +8,7 @@ namespace LD_24.Code
     /// <summary>
     /// Class for a single hero
     /// </summary>
-    public class Hero : Actor, IComparable<Hero>, IEquatable<Hero>
+    public class Hero : Actor
     {
         /// <summary>
         /// Power points of hero
@@ -33,26 +33,6 @@ namespace LD_24.Code
             Agility = agility;
             Intellect = intellect;
             Special = special;
-        }
-
-        /// <summary>
-        /// Compare hero to hero by intellect
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public int CompareTo(Hero other)
-        {
-            return Intellect.CompareTo(other.Intellect);
-        }
-
-        /// <summary>
-        /// Check if 2 heros have the same intellect
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(Hero other)
-        {
-            return Intellect.Equals(other.Intellect);
         }
 
         /// <summary>

@@ -8,7 +8,7 @@ namespace LD_24.Code
     /// <summary>
     /// Class for storing a single NPC
     /// </summary>
-    public class NPC : Actor, IComparable<NPC>, IEquatable<NPC>
+    public class NPC : Actor
     {
         /// <summary>
         /// blah blah blah blah
@@ -18,26 +18,6 @@ namespace LD_24.Code
         public NPC(string race, string startingTown, string name, string @class, int health, int mana, int attack, int defense, string guild) : base(race, startingTown, name, @class, health, mana, attack, defense)
         {
             Guild = guild;
-        }
-
-        /// <summary>
-        /// blah blah
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public int CompareTo(NPC other)
-        {
-            return Attack.CompareTo(other.Attack);
-        }
-
-        /// <summary>
-        /// blah blah blah
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(NPC other)
-        {
-            return Attack.Equals(other.Attack);
         }
 
         /// <summary>
