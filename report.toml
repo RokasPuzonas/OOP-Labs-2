@@ -13,7 +13,7 @@ guide = """
 kad neįmanoma susitiki.
 """
 problem = """
-LD_24. **Susitikimas.**
+LD_24. Susitikimas.
 
 Grupė draugų nusprendė susitikti mieste, o po to kartu eiti valgyti picos. Bet
 tuomet jie susiginčijo, kur geriausia susitikti, ir kurioje picerijoje valgyti.
@@ -58,7 +58,7 @@ guide = """
 * Spausti "Atrinkti" mygtuką
 """
 problem = """
-LD_24. **Detalės.**
+LD_24. Detalės.
 
 Internetinėje parduotuvėje pirkėjai užsisakinėja robotų gamybai reikalingus
 įtaisus. Suraskite populiariausią įtaisą, kiek tokių įtaisų parduota ir už
@@ -99,7 +99,7 @@ tests_screenshots = [
 	"L3/LD_24Tests/screenshot3.PNG"
 ]
 problem = """
-LD_24. **Detalės.**
+LD_24. Detalės.
 
 Internetinėje parduotuvėje pirkėjai užsisakinėja robotų gamybai reikalingus
 įtaisus. Suraskite populiariausią įtaisą, kiek tokių įtaisų parduota ir už
@@ -134,7 +134,7 @@ tests_screenshots = [
 	"L4/LD_24Tests/screenshot1.png"
 ]
 problem = """
-U4_24. **Kompiuterinis žaidimas.**
+U4_24. Kompiuterinis žaidimas.
 
 Žaidimo pasaulyje yra dviejų tipų veikėjai - žaidėjo valdomi herojai bei
 kompiuterio valdomi „NPC“ (non playable character). Sugrupavote žaidimo veikėjus pagal rases, ir surašėte
@@ -158,7 +158,7 @@ dydžio. Herojus rikiuokite pagal intelektą, o NPC – pagal žalos taškus. Re
 [[sections]]
 title = "Deklaratyvusis programavimas (L5)"
 problem = """
-LDD_24. **Leidėjai.**
+LDD_24. Leidėjai.
 
 Žmonės užsisako spaudą. Užsakymas vyksta metų ribose. Pirmoje failo eilutėje
 nurodyta įvedimo data (failų daug), o tolesnėse eilutėse nurodyta prenumeratoriaus pavardė, adresas,
