@@ -1,0 +1,5 @@
+﻿GUS;Awesome Plastic Gloves;Simonis Inc;16.19
+WUF;Practical Frozen Tuna;Simonis Inc;17.33
+M2L;Tasty Frozen Keyboard;Mills LLC;10.67
+9DI;Incredible Metal Cheese;Mills LLC;37.38
+M4Z;Tasty Wooden Bike;Simonis Inc;36.40
