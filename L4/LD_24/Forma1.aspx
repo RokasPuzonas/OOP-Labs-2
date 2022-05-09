@@ -18,6 +18,9 @@
             <asp:TextBox ID="TextBox2" runat="server" TextMode="Number"></asp:TextBox>
             <br />
             <br />
+            <asp:Label ID="Label5" runat="server" ForeColor="Red"></asp:Label>
+            <br />
+            <br />
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Vykdyti" />
             <br />
             <br />

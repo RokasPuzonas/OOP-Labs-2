@@ -1,0 +1,7 @@
+Elf
+Konopelskitown
+Gail;Mage;6;23;24;17;Hand, Cummerata and Wolff
+Garret;Mage;5;11;1;10;13;22;14;4
+Maybelle;Hunter;21;11;25;17;24;25;5;5
+Amy;Warrior;11;5;13;15;12;4;3;23
+Natalie;Warrior;18;23;25;14;West Inc

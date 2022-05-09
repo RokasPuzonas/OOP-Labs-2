@@ -1,0 +1,5 @@
+Elf
+Port Sierraton
+Lyla;Archer;5;10;5;21;Crona - Abshire
+Ruthe;Necromancer;7;21;11;10;McDermott, Satterfield and Reichel
+Berneice;Mage;6;23;23;6;Sawayn - Kovacek

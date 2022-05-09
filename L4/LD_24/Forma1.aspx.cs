@@ -36,9 +36,7 @@ namespace LD_24
                 actors = InOutUtils.ReadActorsDir(Server.MapPath("App_Data"));
             } catch (Exception ex)
             {
-                Debug.WriteLine("Oops an error occured:");
-                Debug.WriteLine(ex);
-                throw ex;
+                Label5.Text = ex.Message;
             }
 
             Label1.Visible = false;
@@ -47,6 +45,8 @@ namespace LD_24
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            if (Label5.Text.Length > 0) return;
+
             Label1.Visible = true;
             Label2.Visible = true;
 

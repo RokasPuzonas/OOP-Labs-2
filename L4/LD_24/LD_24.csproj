@@ -71,8 +71,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Actors1.txt" />
+    <Content Include="App_Data\Actors2.txt" />
+    <Content Include="App_Data\Actors3.txt" />
     <Content Include="Forma1.aspx" />
     <Content Include="Styles\main.css" />
+    <Content Include="tests\3\inputs\Actors1.txt" />
+    <Content Include="tests\3\inputs\Actors2.txt" />
+    <Content Include="tests\3\inputs\Actors3.txt" />
+    <Content Include="tests\3\outputs\web.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +101,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Klasės.csv" />
+    <Content Include="App_Data\Riktine.csv" />
+    <Content Include="App_Data\Trūkstami.csv" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -103,7 +113,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="tests\1\inputs\" />
     <Folder Include="tests\1\outputs\" />
     <Folder Include="tests\2\inputs\" />
