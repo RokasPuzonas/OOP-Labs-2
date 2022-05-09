@@ -178,6 +178,7 @@ namespace LD_24.Code
         {
             using (var writer = new StreamWriter(filename, false, Encoding.UTF8))
             {
+                writer.WriteLine(string.Join(";", "Rasė", "Miestas", "Vardas", "Klasė", "Gyvybė", "Mana", "Žala", "Šarvai", "Jėga", "Virkrumas", "Intelektas", "Ypatinga galia", "Gildija"));
                 foreach (var actor in team)
                 {
                     writer.WriteLine(actor.ToCSVLine());
@@ -205,7 +206,7 @@ namespace LD_24.Code
         /// <param name="actors"></param>
         public static void ShowActors(ResultsWriter writer, IEnumerable<Actor> actors)
         {
-            foreach (var tuple in writer.WriteTable(actors, "Rasė", "Miestas", "Vardas", "Klasė", "Gyvybė", "Mana", "Žala", "Šarvai"))
+            foreach (var tuple in writer.WriteTable(actors, "Rasė", "Miestas", "Vardas", "Klasė", "Gyvybė", "Mana", "Žala", "Šarvai", "Jėga", "Virkrumas", "Intelektas", "Ypatinga galia", "Gildija"))
             {
                 var actor = tuple.Item1;
                 var row = tuple.Item2;
@@ -217,6 +218,23 @@ namespace LD_24.Code
                 row.Add(actor.Mana);
                 row.Add(actor.Attack);
                 row.Add(actor.Defense);
+                if (actor is Hero)
+                {
+                    var hero = actor as Hero;
+                    row.Add(hero.Power);
+                    row.Add(hero.Agility);
+                    row.Add(hero.Intellect);
+                    row.Add(hero.Special);
+                    row.Add("");
+                } else if (actor is NPC)
+                {
+                    var npc = actor as NPC;
+                    row.Add("");
+                    row.Add("");
+                    row.Add("");
+                    row.Add("");
+                    row.Add(npc.Guild);
+                }
             }
         }
 

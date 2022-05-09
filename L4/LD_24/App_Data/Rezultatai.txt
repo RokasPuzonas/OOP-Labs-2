@@ -1,30 +1,30 @@
 ﻿Pradiniai duomenys:
-------------------------------------------------------------------------------
-| Rasė | Miestas        | Vardas   | Klasė   | Gyvybė | Mana | Žala | Šarvai |
-------------------------------------------------------------------------------
-| Elf  | Konopelskitown | Gail     | Mage    | 6      | 23   | 24   | 17     |
-| Elf  | Konopelskitown | Garret   | Mage    | 5      | 11   | 1    | 10     |
-| Elf  | Konopelskitown | Maybelle | Hunter  | 21     | 11   | 25   | 17     |
-| Elf  | Konopelskitown | Amy      | Warrior | 11     | 5    | 13   | 15     |
-| Elf  | Konopelskitown | Natalie  | Warrior | 18     | 23   | 25   | 14     |
-------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė | Miestas        | Vardas   | Klasė   | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija                   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Elf  | Konopelskitown | Gail     | Mage    | 6      | 23   | 24   | 17     |      |           |            |                | Hand, Cummerata and Wolff |
+| Elf  | Konopelskitown | Garret   | Mage    | 5      | 11   | 1    | 10     | 13   | 22        | 14         | 4              |                           |
+| Elf  | Konopelskitown | Maybelle | Hunter  | 21     | 11   | 25   | 17     | 24   | 25        | 5          | 5              |                           |
+| Elf  | Konopelskitown | Amy      | Warrior | 11     | 5    | 13   | 15     | 12   | 4         | 3          | 23             |                           |
+| Elf  | Konopelskitown | Natalie  | Warrior | 18     | 23   | 25   | 14     |      |           |            |                | West Inc                  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-----------------------------------------------------------------------------------
-| Rasė | Miestas        | Vardas   | Klasė       | Gyvybė | Mana | Žala | Šarvai |
-----------------------------------------------------------------------------------
-| Elf  | Port Sierraton | Lyla     | Archer      | 5      | 10   | 5    | 21     |
-| Elf  | Port Sierraton | Ruthe    | Necromancer | 7      | 21   | 11   | 10     |
-| Elf  | Port Sierraton | Berneice | Mage        | 6      | 23   | 23   | 6      |
-----------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė | Miestas        | Vardas   | Klasė       | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija                            |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Elf  | Port Sierraton | Lyla     | Archer      | 5      | 10   | 5    | 21     |      |           |            |                | Crona - Abshire                    |
+| Elf  | Port Sierraton | Ruthe    | Necromancer | 7      | 21   | 11   | 10     |      |           |            |                | McDermott, Satterfield and Reichel |
+| Elf  | Port Sierraton | Berneice | Mage        | 6      | 23   | 23   | 6      |      |           |            |                | Sawayn - Kovacek                   |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------
-| Rasė | Miestas         | Vardas    | Klasė  | Gyvybė | Mana | Žala | Šarvai |
--------------------------------------------------------------------------------
-| Orc  | North Anastacio | Will      | Mage   | 18     | 24   | 21   | 3      |
-| Orc  | North Anastacio | Brennan   | Mage   | 2      | 5    | 4    | 8      |
-| Orc  | North Anastacio | Jannie    | Hunter | 15     | 5    | 25   | 10     |
-| Orc  | North Anastacio | Nicolette | Archer | 11     | 9    | 3    | 17     |
--------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė | Miestas         | Vardas    | Klasė  | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija                    |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Orc  | North Anastacio | Will      | Mage   | 18     | 24   | 21   | 3      | 25   | 17        | 4          | 21             |                            |
+| Orc  | North Anastacio | Brennan   | Mage   | 2      | 5    | 4    | 8      |      |           |            |                | Lindgren, Spinka and Walsh |
+| Orc  | North Anastacio | Jannie    | Hunter | 15     | 5    | 25   | 10     |      |           |            |                | Kub - Flatley              |
+| Orc  | North Anastacio | Nicolette | Archer | 11     | 9    | 3    | 17     | 16   | 10        | 18         | 15             |                            |
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Daugiausiai gyvybės taškų pagal klases:
 -------------------------------------------
@@ -51,15 +51,15 @@ Trūkstamos NPC rasės:
 Nėra
 
 Bendra veikėjų rinktinė:
---------------------------------------------------------------------------------
-| Rasė | Miestas         | Vardas    | Klasė   | Gyvybė | Mana | Žala | Šarvai |
---------------------------------------------------------------------------------
-| Elf  | Konopelskitown  | Amy       | Warrior | 11     | 5    | 13   | 15     |
-| Orc  | North Anastacio | Will      | Mage    | 18     | 24   | 21   | 3      |
-| Elf  | Konopelskitown  | Maybelle  | Hunter  | 21     | 11   | 25   | 17     |
-| Elf  | Konopelskitown  | Garret    | Mage    | 5      | 11   | 1    | 10     |
-| Orc  | North Anastacio | Nicolette | Archer  | 11     | 9    | 3    | 17     |
-| Orc  | North Anastacio | Brennan   | Mage    | 2      | 5    | 4    | 8      |
-| Elf  | Port Sierraton  | Lyla      | Archer  | 5      | 10   | 5    | 21     |
---------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė | Miestas         | Vardas    | Klasė   | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija                    |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Elf  | Konopelskitown  | Amy       | Warrior | 11     | 5    | 13   | 15     | 12   | 4         | 3          | 23             |                            |
+| Orc  | North Anastacio | Will      | Mage    | 18     | 24   | 21   | 3      | 25   | 17        | 4          | 21             |                            |
+| Elf  | Konopelskitown  | Maybelle  | Hunter  | 21     | 11   | 25   | 17     | 24   | 25        | 5          | 5              |                            |
+| Elf  | Konopelskitown  | Garret    | Mage    | 5      | 11   | 1    | 10     | 13   | 22        | 14         | 4              |                            |
+| Orc  | North Anastacio | Nicolette | Archer  | 11     | 9    | 3    | 17     | 16   | 10        | 18         | 15             |                            |
+| Orc  | North Anastacio | Brennan   | Mage    | 2      | 5    | 4    | 8      |      |           |            |                | Lindgren, Spinka and Walsh |
+| Elf  | Port Sierraton  | Lyla      | Archer  | 5      | 10   | 5    | 21     |      |           |            |                | Crona - Abshire            |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
 

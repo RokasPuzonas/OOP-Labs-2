@@ -26,7 +26,7 @@ namespace LD_24.Code
         /// <returns></returns>
         public override string ToCSVLine()
         {
-            return string.Join(";", Race, StartingTown, Name, Class, Health, Mana, Attack, Defense, Guild);
+            return string.Join(";", Race, StartingTown, Name, Class, Health, Mana, Attack, Defense, "", "", "", "", Guild);
         }
     }
 }
