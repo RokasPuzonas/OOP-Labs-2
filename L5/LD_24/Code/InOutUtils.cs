@@ -8,10 +8,19 @@ using System.Web;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// Input/Output utilities
+    /// </summary>
     public static class InOutUtils
     {
         private static readonly Faker faker = new Faker();
 
+        /// <summary>
+        /// Generate some initial data, by some initial parameters
+        /// </summary>
+        /// <param name="subscriberAmount"></param>
+        /// <param name="publicationAmount"></param>
+        /// <param name="outputFolder"></param>
         public static void GenerateInitialData(int subscriberAmount, int publicationAmount, string outputFolder)
         {
             var publisherAmount = faker.Random.Number(2, publicationAmount);
@@ -56,6 +65,12 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Read all publications from a file
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static List<Publication> ReadPublications(string filename)
         {
             var publications = new List<Publication>();
@@ -75,6 +90,12 @@ namespace LD_24.Code
             return publications;
         }
 
+        /// <summary>
+        /// Read subscribers from a file
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static List<Subscriber> ReadSubscribers(string filename)
         {
             var subscribers = new List<Subscriber>();
@@ -98,6 +119,13 @@ namespace LD_24.Code
             return subscribers;
         }
 
+        /// <summary>
+        /// Read all subscribers from a directory
+        /// </summary>
+        /// <param name="folder"></param>
+        /// <param name="pattern"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static List<List<Subscriber>> ReadSubscribersFromDir(string folder, string pattern = "*.txt")
         {
             if (!Directory.Exists(folder))
@@ -112,6 +140,11 @@ namespace LD_24.Code
             return subscribers;
         }
 
+        /// <summary>
+        /// Print a table of publications
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="publications"></param>
         public static void PrintPublications(ResultsWriter writer, IEnumerable<Publication> publications)
         {
             foreach (var tuple in writer.WriteTable(publications, "Kodas", "Pavadinimas", "Leidėjas", "Kaina"))
@@ -125,6 +158,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Print a table of subscribers
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="subscribers"></param>
         public static void PrintSubscribers(ResultsWriter writer, IEnumerable<Subscriber> subscribers)
         {
             foreach (var tuple in writer.WriteTable(subscribers, "Įvedimo data", "Pavardė", "Adresas", "Laikotarpio pradžia", "Laikotarpio ilgis", "Leidinys", "Leidinių kiekis"))
@@ -140,6 +178,12 @@ namespace LD_24.Code
                 row.Add(subscriber.SubscrionCount);
             }
         }
+
+        /// <summary>
+        /// Print a list of table of subscribers
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="manySubscribers"></param>
         public static void PrintManySubscribers(ResultsWriter writer, IEnumerable<IEnumerable<Subscriber>> manySubscribers)
         {
             foreach (var subscribers in manySubscribers)

@@ -77,6 +77,16 @@
     <Content Include="App_Data\Subscribers2.txt" />
     <Content Include="App_Data\Subscribers3.txt" />
     <Content Include="Styles\main.css" />
+    <Content Include="tests\1\inputs\Publications.txt" />
+    <Content Include="tests\1\inputs\Subscribers1.txt" />
+    <Content Include="tests\1\inputs\Subscribers2.txt" />
+    <Content Include="tests\1\inputs\Subscribers3.txt" />
+    <Content Include="tests\1\outputs\Rezultatai.txt" />
+    <Content Include="tests\2\inputs\Publications.txt" />
+    <Content Include="tests\2\inputs\Subscribers1.txt" />
+    <Content Include="tests\2\inputs\Subscribers2.txt" />
+    <Content Include="tests\2\inputs\Subscribers3.txt" />
+    <Content Include="tests\2\outputs\Rezultatai.txt" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>

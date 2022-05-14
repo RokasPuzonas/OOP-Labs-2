@@ -8,6 +8,9 @@ using LD_24.Code;
 
 namespace LD_24
 {
+    /// <summary>
+    /// Main form
+    /// </summary>
     public partial class WebForm1 : System.Web.UI.Page
     {
         List<List<Subscriber>> Subscribers;
@@ -69,19 +72,6 @@ namespace LD_24
         {
             if (Publications == null || Subscribers == null) return;
 
-            //    █▀▀▀▀▀█ █▄█  ▄█ ▄ █▀▀▀▀▀█
-            //    █ ███ █  ██▀██▄ ▀ █ ███ █
-            //    █ ▀▀▀ █ ███   █   █ ▀▀▀ █
-            //    ▀▀▀▀▀▀▀ █ █▄█ █▄█ ▀▀▀▀▀▀▀
-            //    ▀▀█▄ ▀▀▄██▀▄▀▄▀▄▀▀█▀▀▄ ██
-            //    ▄▀  ▀█▀▀▀▄ ▀  ▄█▀ ▄ ██▀ ▀
-            //    ▀█▀▄█ ▀█▄▀ █   █▄ ██   ▄█
-            //    ▀▀▄▀██▀ ▄█▄█▀ █▀▄█ ▄▄█▀ ▀
-            //    ▀▀ ▀ ▀▀▀█▄▀█  ███▀▀▀█  ▀▄
-            //    █▀▀▀▀▀█ ▄▄██ ▀ ▄█ ▀ █  ▄█
-            //    █ ███ █   ██ ▄ ███▀▀█ ▄▄ 
-            //    █ ▀▀▀ █ █ █▀█ ▀ ██▄██▀ ▀▀
-            //    ▀▀▀▀▀▀▀ ▀ ▀▀    ▀ ▀  ▀  ▀
             var subscribers = Subscribers.SelectMany(x => x).ToList();
             var incomes = subscribers
                 .Join(Publications, s => s.SubscriptionID, p => p.ID, (s, p) => new {

@@ -157,6 +157,13 @@ dydžio. Herojus rikiuokite pagal intelektą, o NPC – pagal žalos taškus. Re
 
 [[sections]]
 title = "Deklaratyvusis programavimas (L5)"
+project = "L5/LD_24"
+interface_scheme = "L5/LD_24/interface-scheme.png"
+guide = """
+* Atsidaryti tinklalapį
+* Įvesti norimą mėnesį
+* Spausti "Skaičiuoti pajamas" arba "Vykdyti visa kita" mygtuką
+"""
 problem = """
 LDD_24. Leidėjai.
 
