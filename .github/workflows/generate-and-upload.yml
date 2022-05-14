@@ -19,6 +19,7 @@ on:
       - 'L3/LD_24Tests/**'
       - 'L4/LD_24/**'
       - 'L4/LD_24Tests/**'
+      - 'L5/LD_24/**'
 
 jobs:
   generate-and-upload:
