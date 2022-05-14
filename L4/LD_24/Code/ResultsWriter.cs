@@ -9,6 +9,9 @@ using System.Web.UI.WebControls;
 
 namespace LD_24.Code
 {
+    /// <summary>
+    /// A helper class for writing result files
+    /// </summary>
     public class ResultsWriter : IDisposable
     {
         private readonly StreamWriter FileWriter;
@@ -20,17 +23,29 @@ namespace LD_24.Code
             ResultDiv = resultDiv;
         }
 
+        /// <summary>
+        /// Write a line to the result outputs
+        /// </summary>
+        /// <param name="line"></param>
         public void WriteLine(string line)
         {
             FileWriter.WriteLine(line);
             ResultDiv.Controls.Add(new Label { Text = line + "<br />" });
         }
 
+        /// <summary>
+        /// Writes an empty line
+        /// </summary>
         public void WriteLine()
         {
             WriteLine("");
         }
 
+        /// <summary>
+        /// Write a table to the web
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="columns"></param>
         private void WriteWebTable(List<List<string>> rows, params string[] columns)
         {
             Table table = new Table();
@@ -60,6 +75,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Print a single row of values in a table format to file
+        /// </summary>
+        /// <param name="cells"></param>
+        /// <param name="widths"></param>
         private void PrintTableRow(IList<string> cells, List<int> widths)
         {
             for (int i = 0; i < widths.Count; i++)
@@ -69,6 +89,12 @@ namespace LD_24.Code
             FileWriter.WriteLine("|");
         }
 
+        /// <summary>
+        /// Calculate the minimum required widths for each column
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="columns"></param>
+        /// <returns></returns>
         private static List<int> FindTableWidths(List<List<string>> rows, string[] columns)
         {
             List<int> widths = new List<int>();
@@ -87,6 +113,11 @@ namespace LD_24.Code
             return widths;
         }
 
+        /// <summary>
+        /// Write a table to file
+        /// </summary>
+        /// <param name="rows"></param>
+        /// <param name="columns"></param>
         private void WriteFileTable(List<List<string>> rows, params string[] columns)
         {
             var widths = FindTableWidths(rows, columns);
@@ -109,6 +140,13 @@ namespace LD_24.Code
             FileWriter.WriteLine(new string('-', totalWidth));
         }
 
+        /// <summary>
+        /// Writes a table to the WEB and file
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
+        /// <param name="columns"></param>
+        /// <returns></returns>
         public IEnumerable<Tuple<T, List<object>>> WriteTable<T>(IEnumerable<T> items, params string[] columns)
         {
             List<List<string>> rows = new List<List<string>>();
@@ -124,6 +162,11 @@ namespace LD_24.Code
             WriteLine();
         }
 
+        /// <summary>
+        /// Write a bulleted list to the file
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
         private void WriteFileList<T>(IEnumerable<T> items)
         {
             foreach (var item in items)
@@ -132,6 +175,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Write a bulleted list to the web
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
         private void WriteWebList<T>(IEnumerable<T> items)
         {
             var list = new BulletedList();
@@ -142,6 +190,11 @@ namespace LD_24.Code
             }
         }
 
+        /// <summary>
+        /// Write a bulleted list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="items"></param>
         public void WriteList<T>(IEnumerable<T> items)
         {
             if (items.Any())
