@@ -165,7 +165,7 @@ namespace LD_24.Code
         /// <param name="subscribers"></param>
         public static void PrintSubscribers(ResultsWriter writer, IEnumerable<Subscriber> subscribers)
         {
-            foreach (var tuple in writer.WriteTable(subscribers, "Įvedimo data", "Pavardė", "Adresas", "Laikotarpio pradžia", "Laikotarpio ilgis", "Leidinys", "Leidinių kiekis"))
+            foreach (var tuple in writer.WriteTable(subscribers, "Įvedimo data", "Pavardė", "Adresas", "Pradžia", "Ilgis", "Kodas", "Kiekis"))
             {
                 var subscriber = tuple.Item1;
                 var row = tuple.Item2;

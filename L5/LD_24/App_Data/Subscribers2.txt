@@ -1,4 +1,8 @@
-﻿10/28/2021
-Bashirian;3154 Raphael Summit;5;5;5CD;4
-Huel;477 Leatha Rapid;3;6;5CD;4
-Roberts;182 Casper Island;2;4;5CD;3
+﻿12/12/2021
+Swift;217 Theodora Ports;3;4;M4Z;1
+Quigley;41322 Hermann Row;12;1;M4Z;6
+Mayer;4596 Legros Rue;9;3;WUF;1
+Stehr;3662 Ruecker Route;9;1;9DI;1
+Friesen;3079 Ondricka Park;4;5;M4Z;8
+Sanford;09832 Huels Curve;2;9;9DI;8
+Schuppe;631 Isac Corner;6;6;9DI;1

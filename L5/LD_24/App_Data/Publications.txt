@@ -1,5 +1,5 @@
-﻿5CD;Handcrafted Granite Salad;Thompson Inc;5.55
-Y2S;Practical Fresh Cheese;Kuphal, Yost and Hilpert;39.66
-T47;Awesome Cotton Bacon;Medhurst Inc;47.51
-2R7;Ergonomic Plastic Pants;Medhurst Inc;1.31
-N6Y;Fantastic Concrete Car;Kuphal, Yost and Hilpert;10.64
+﻿GUS;Awesome Plastic Gloves;Simonis Inc;16.19
+WUF;Practical Frozen Tuna;Simonis Inc;17.33
+M2L;Tasty Frozen Keyboard;Mills LLC;10.67
+9DI;Incredible Metal Cheese;Mills LLC;37.38
+M4Z;Tasty Wooden Bike;Simonis Inc;36.40
