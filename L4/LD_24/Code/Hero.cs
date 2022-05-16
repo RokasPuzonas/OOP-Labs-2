@@ -8,7 +8,7 @@ namespace LD_24.Code
     /// <summary>
     /// Class for a single hero
     /// </summary>
-    public class Hero : Actor
+    public class Hero : Actor, IEquatable<Hero>, IComparable<Hero>
     {
         /// <summary>
         /// Power points of hero
@@ -42,6 +42,16 @@ namespace LD_24.Code
         public override string ToCSVLine()
         {
             return string.Join(";", Race, StartingTown, Name, Class, Health, Mana, Attack, Defense, Power, Agility, Intellect, Special, "");
+        }
+
+        public int CompareTo(Hero other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Equals(Hero other)
+        {
+            throw new NotImplementedException();
         }
     }
 }

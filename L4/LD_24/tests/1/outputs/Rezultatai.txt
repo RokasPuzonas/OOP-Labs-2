@@ -1,0 +1,64 @@
+﻿Pradiniai duomenys:
+---------------------------------------------------------------------------------------------------------------------------------------
+| Rasė | Miestas        | Vardas | Klasė   | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija |
+---------------------------------------------------------------------------------------------------------------------------------------
+| Elf  | Padbergborough | Verla  | Warrior | 16     | 23   | 16   | 23     | 21   | 12        | 2          | 10             |         |
+---------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė  | Miestas    | Vardas    | Klasė       | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija                       |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Dwarf | Verdiebury | Toney     | Hunter      | 20     | 2    | 9    | 11     | 13   | 6         | 17         | 16             |                               |
+| Dwarf | Verdiebury | Andreanne | Warrior     | 14     | 25   | 6    | 23     |      |           |            |                | Rempel LLC                    |
+| Dwarf | Verdiebury | Octavia   | Necromancer | 16     | 20   | 13   | 14     |      |           |            |                | Considine, Runte and Mosciski |
+| Dwarf | Verdiebury | Ocie      | Warrior     | 14     | 16   | 22   | 7      | 14   | 3         | 3          | 18             |                               |
+| Dwarf | Verdiebury | Vicente   | Hunter      | 16     | 20   | 24   | 3      |      |           |            |                | Farrell, Watsica and O'Keefe  |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė | Miestas          | Vardas   | Klasė       | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija                            |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Orc  | East Chelseyberg | Shaina   | Archer      | 20     | 2    | 23   | 1      |      |           |            |                | Wintheiser, Heidenreich and Hansen |
+| Orc  | East Chelseyberg | Lucie    | Archer      | 12     | 16   | 14   | 2      | 9    | 5         | 19         | 15             |                                    |
+| Orc  | East Chelseyberg | Doyle    | Archer      | 12     | 14   | 18   | 3      | 10   | 10        | 18         | 1              |                                    |
+| Orc  | East Chelseyberg | Amir     | Mage        | 15     | 9    | 16   | 2      |      |           |            |                | Steuber Group                      |
+| Orc  | East Chelseyberg | Muhammad | Necromancer | 2      | 19   | 12   | 2      | 3    | 7         | 22         | 2              |                                    |
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Daugiausiai gyvybės taškų pagal klases:
+------------------------------------------
+| Vardas  | Rasė  | Klasė       | Gyvybė |
+------------------------------------------
+| Verla   | Elf   | Warrior     | 16     |
+| Toney   | Dwarf | Hunter      | 20     |
+| Octavia | Dwarf | Necromancer | 16     |
+| Shaina  | Orc   | Archer      | 20     |
+| Amir    | Orc   | Mage        | 15     |
+------------------------------------------
+
+Visos klasės:
+* Warrior
+* Hunter
+* Necromancer
+* Archer
+* Mage
+
+Trūkstamos herojų rasės:
+Nėra
+
+Trūkstamos NPC rasės:
+* Elf
+
+Bendra veikėjų rinktinė:
+----------------------------------------------------------------------------------------------------------------------------------------------------
+| Rasė  | Miestas          | Vardas    | Klasė       | Gyvybė | Mana | Žala | Šarvai | Jėga | Virkrumas | Intelektas | Ypatinga galia | Gildija    |
+----------------------------------------------------------------------------------------------------------------------------------------------------
+| Elf   | Padbergborough   | Verla     | Warrior     | 16     | 23   | 16   | 23     | 21   | 12        | 2          | 10             |            |
+| Dwarf | Verdiebury       | Ocie      | Warrior     | 14     | 16   | 22   | 7      | 14   | 3         | 3          | 18             |            |
+| Dwarf | Verdiebury       | Toney     | Hunter      | 20     | 2    | 9    | 11     | 13   | 6         | 17         | 16             |            |
+| Orc   | East Chelseyberg | Doyle     | Archer      | 12     | 14   | 18   | 3      | 10   | 10        | 18         | 1              |            |
+| Orc   | East Chelseyberg | Lucie     | Archer      | 12     | 16   | 14   | 2      | 9    | 5         | 19         | 15             |            |
+| Orc   | East Chelseyberg | Muhammad  | Necromancer | 2      | 19   | 12   | 2      | 3    | 7         | 22         | 2              |            |
+| Dwarf | Verdiebury       | Andreanne | Warrior     | 14     | 25   | 6    | 23     |      |           |            |                | Rempel LLC |
+----------------------------------------------------------------------------------------------------------------------------------------------------
+

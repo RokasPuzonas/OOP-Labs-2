@@ -8,7 +8,7 @@ namespace LD_24.Code
     /// <summary>
     /// Class for storing a single NPC
     /// </summary>
-    public class NPC : Actor
+    public class NPC : Actor, IEquatable<NPC>, IComparable<NPC>
     {
         /// <summary>
         /// blah blah blah blah
@@ -27,6 +27,16 @@ namespace LD_24.Code
         public override string ToCSVLine()
         {
             return string.Join(";", Race, StartingTown, Name, Class, Health, Mana, Attack, Defense, "", "", "", "", Guild);
+        }
+
+        public bool Equals(NPC other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int CompareTo(NPC other)
+        {
+            throw new NotImplementedException();
         }
     }
 }

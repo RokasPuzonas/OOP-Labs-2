@@ -74,6 +74,7 @@
     <Content Include="App_Data\Actors1.txt" />
     <Content Include="App_Data\Actors2.txt" />
     <Content Include="App_Data\Actors3.txt" />
+    <Content Include="App_Data\Rezultatai.txt" />
     <Content Include="Forma1.aspx" />
     <Content Include="Styles\main.css" />
     <Content Include="tests\3\inputs\Actors1.txt" />
